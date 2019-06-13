@@ -1,0 +1,27 @@
+﻿@model LittleBooks.Common.Models.AboutProjectModel
+@using LittleBooks.Common.Resources;
+
+@{
+    ViewBag.Title = AdminResources.aboutProject;
+}
+
+<h2>@AdminResources.aboutProject</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(AdminResources.edit, "EditAboutProject", new { id = Model.Id }) 
+    
+</p>

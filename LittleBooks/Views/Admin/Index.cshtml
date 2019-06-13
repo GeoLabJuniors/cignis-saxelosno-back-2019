@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LittleBooks.Common.Models.TaleModel>
+@using LittleBooks.Common.Resources;
+
+@{
+    ViewBag.Title = AdminResources.Tales;
+}
+
+    <h2>@AdminResources.Tales</h2>
+
+<p>
+    @Html.ActionLink(AdminResources.createNew, "AddTale")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaleLink)
+        </th>
+        <th>
+            <p>@AdminResources.author</p>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        <a href="@Html.DisplayFor(modelItem => item.TaleLink)">@Html.DisplayFor(modelItem => item.TaleLink)</a>
+    </td>
+    <th>
+        @Html.DisplayFor(modelItem => item.Author.FirstName)
+  
+        @Html.DisplayFor(modelItem => item.Author.LastName)
+    </th>
+    <td>
+        <img src="@Url.Content(item.ImageUrl)" height="100" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreateDate)
+    </td>
+
+
+
+    <td>
+        @Html.ActionLink(AdminResources.edit, "EditTale", new { id = item.Id }) |
+
+        @Html.ActionLink(AdminResources.delete, "DeleteTale", new { id = item.Id })
+    </td>
+</tr>
+    }
+
+</table>

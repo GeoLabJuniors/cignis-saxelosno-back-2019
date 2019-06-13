@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LittleBooks.Common.Models.AuthorModel>
+@using LittleBooks.Common.Resources;
+@{
+    ViewBag.Title = AdminResources.authors;
+}
+
+    <h2>@AdminResources.authors</h2>
+
+<p>
+    @Html.ActionLink(AdminResources.createNew, "AddAuthor")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.About)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageFile)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.About)
+            </td>
+            <td>
+                <img src="@Url.Content(item.ImageUrl)" height="100" />
+            </td>
+
+            <td>
+                @Html.ActionLink(AdminResources.edit, "EditAuthor", new { id = item.Id }) |
+
+                @Html.ActionLink(AdminResources.delete, "DeleteAuthor", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
