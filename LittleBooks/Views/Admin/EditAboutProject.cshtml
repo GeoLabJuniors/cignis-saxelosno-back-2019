@@ -5,39 +5,55 @@
     ViewBag.Title = AdminResources.editAboutProject;
 }
 
-    <h2>@AdminResources.editAboutProject</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="br-mainpanel">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        <div class="br-pagetitle">
+            <div>
+                <h2>@AdminResources.editAboutProject</h2>
+            </div>
+        </div><!-- d-flex -->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
 
-                @Html.TextAreaFor(model => model.Text, new { @class = "form-control", @cols = 50, @rows = 10 })
-                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+
+                    @Html.TextAreaFor(model => model.Text, new { @class = "form-control", @cols = 50, @rows = 10 })
+                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+         
+
+            <div class="form-group">
+                <div class="col-sm-6 col-md-3 mg-t-50">
+                    <button class="btn btn-warning btn-block mg-b-10">@AdminResources.save</button>
+                </div><!-- col-sm-3 -->
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@AdminResources.save" class="btn btn-success" />
+        <div class="d-flex">
+            <div>
+                <h5 class="mg-l-0 bd bd-3 bd-info">
+                    @Html.ActionLink(AdminResources.back, "GetAboutProject")
+                </h5>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink(AdminResources.back, "GetAboutProject")
-</div>
+<script src="../Samples/js/bracket.js"></script>
+
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

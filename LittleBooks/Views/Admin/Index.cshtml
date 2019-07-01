@@ -5,63 +5,109 @@
     ViewBag.Title = AdminResources.Tales;
 }
 
-    <h2>@AdminResources.Tales</h2>
-
-<p>
-    @Html.ActionLink(AdminResources.createNew, "AddTale")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaleLink)
-        </th>
-        <th>
-            <p>@AdminResources.author</p>
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageFile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
 
 
+<div class="br-mainpanel">
 
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        <a href="@Html.DisplayFor(modelItem => item.TaleLink)">@Html.DisplayFor(modelItem => item.TaleLink)</a>
-    </td>
-    <th>
-        @Html.DisplayFor(modelItem => item.Author.FirstName)
-  
-        @Html.DisplayFor(modelItem => item.Author.LastName)
-    </th>
-    <td>
-        <img src="@Url.Content(item.ImageUrl)" height="100" />
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CreateDate)
-    </td>
+    <div class="br-pagetitle">
+        <div>
+            <h1>@AdminResources.Tales</h1>
+        </div>
+    </div>
 
 
+    <div class="br-pagebody">
+        <div class="br-section-wrapper">
+            <div class="br-pageheader">
+                <nav class="breadcrumb pd-0 mg-0 tx-12">
+                    <h6 class="breadcrumb-item">@Html.ActionLink(AdminResources.createNew, "AddTale")</h6>
+                </nav>
+            </div>
 
-    <td>
-        @Html.ActionLink(AdminResources.edit, "EditTale", new { id = item.Id }) |
+            <div class="table-wrapper">
 
-        @Html.ActionLink(AdminResources.delete, "DeleteTale", new { id = item.Id })
-    </td>
-</tr>
-    }
+                <table id="datatable1" class="table display responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TaleLink)
+                            </th>
+                            <th>
+                                @AdminResources.author
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ImageFile)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreateDate)
+                            </th>
+                            <th> sdfgsdxx</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-</table>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    <a href="@Html.DisplayFor(modelItem => item.TaleLink)">@Html.DisplayFor(modelItem => item.TaleLink)</a>
+                                </td>
+                                <th>
+                                    @Html.DisplayFor(modelItem => item.Author.FirstName)
+
+                                    @Html.DisplayFor(modelItem => item.Author.LastName)
+                                </th>
+                                <td>
+                                    <img src="@Url.Content(item.ImageUrl)" height="100" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreateDate)
+                                </td>
+
+
+                                <td>
+                                    
+                                    @Html.ActionLink(AdminResources.edit, "EditTale", new { id = item.Id })
+                                    ||
+                                    @Html.ActionLink(AdminResources.delete, "DeleteTale", new { id = item.Id })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Samples/js/bracket.js"></script>
+<script>
+    $(function () {
+        'use strict';
+
+        $('#datatable1').DataTable({
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ items/page',
+            }
+        });
+
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+    });
+</script>

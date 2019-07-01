@@ -5,62 +5,78 @@
     ViewBag.Title = AdminResources.addTale;
 }
 
-    <h2>@AdminResources.addTale</h2>
-
-
 @using (Html.BeginForm("AddTale", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="br-mainpanel">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        <div class="br-pagetitle">
+            <div>
+                <h2>@AdminResources.addTale</h2>
             </div>
-        </div>
+        </div><!-- d-flex -->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TaleLink, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TaleLink, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TaleLink, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                @Html.DropDownListFor(model => model.Author.Id, new SelectList(Model.AuthorsList, "Value", "Text"), AdminResources.select)
+            <div class="form-group">
+                @Html.LabelFor(model => model.TaleLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TaleLink, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TaleLink, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
 
-        <div class="form-group">
-            <label class="control-label col-md-2">@AdminResources.image</label>
-            <div class="col-md-10">
-                <input type="file" name="ImageFile" accept="image/*" required />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+                <div class="col-md-10">
+
+                    @Html.DropDownListFor(model => model.Author.Id, new SelectList(Model.AuthorsList, "Value", "Text"), AdminResources.select)
+                </div>
+
             </div>
-        </div>
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@AdminResources.create" class="btn btn-warning" />
+            <div class="form-group">
+                <label class="control-label col-md-2">@AdminResources.image</label>
+                <div class="col-md-10">
+                    <input type="file" name="ImageFile" accept="image/*" required />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-6 col-md-3 mg-t-50">
+                    <button class="btn btn-pink btn-block mg-b-10">@AdminResources.create</button>
+                </div><!-- col-sm-3 -->
+            </div>
+
+
+
+
+            <div class="d-flex">
+                <div>
+                    <h5 class="mg-l-0 bd bd-3 bd-info">
+                        @Html.ActionLink(AdminResources.back, "Index")
+                    </h5>
+                </div>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink(AdminResources.back, "Index")
-</div>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

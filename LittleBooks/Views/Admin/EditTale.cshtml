@@ -5,75 +5,87 @@
     ViewBag.Title = AdminResources.editTale;
 }
 
-    <h2>@AdminResources.editTale</h2>
-
-
 @using (Html.BeginForm("EditTale", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="br-mainpanel">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        <div class="br-pagetitle">
+            <div>
+                <h1>@AdminResources.editTale</h1>
+            </div>
+        </div><!-- d-flex -->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TaleLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TaleLink, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TaleLink, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+
+                    @Html.DropDownListFor(model => model.Author.Id, Model.AuthorsList, AdminResources.select)
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="control-label col-md-2"></div>
+                <div class="col-md-10">
+                    <img src="@Url.Content(Model.ImageUrl)" height="100" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">@AdminResources.image</label>
+                <div class="col-md-10">
+                    <input type="file" name="ImageFile" accept="image/*" />
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-sm-6 col-md-3 mg-t-50">
+                    <button class="btn btn-pink btn-block mg-b-10">@AdminResources.save</button>
+                </div><!-- col-sm-3 -->
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TaleLink, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TaleLink, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TaleLink, "", new { @class = "text-danger" })
+        <div class="d-flex">
+            <div>
+                <h5 class="mg-l-0 bd bd-3 bd-info">
+                    @Html.ActionLink(AdminResources.back, "Index")
+                </h5>
             </div>
         </div>
 
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                @Html.DropDownListFor(model => model.Author.Id, Model.AuthorsList, AdminResources.select)
-
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="control-label col-md-2"></div>
-            <div class="col-md-10">
-                <img src="@Url.Content(Model.ImageUrl)" height="100" />
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <label class="control-label col-md-2">@AdminResources.image</label>
-            <div class="col-md-10">
-                <input type="file" name="ImageFile" accept="image/*" />
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@AdminResources.save" class="btn btn-success" />
-            </div>
-        </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink(AdminResources.back, "Index")
-</div>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

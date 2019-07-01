@@ -5,10 +5,10 @@
     ViewBag.Title = AdminResources.contact;
 }
 
-<h2>@AdminResources.contact</h2>
 
 
-<table class="table">
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Value)
@@ -27,10 +27,64 @@
                 @Html.DisplayFor(modelItem => item.Value)
             </td>
             <td>
-                @Html.ActionLink(AdminResources.edit, "EditContact", new { id = item.Id }) 
+                @Html.ActionLink(AdminResources.edit, "EditContact", new { id = item.Id })
 
             </td>
         </tr>
     }
 
-</table>
+</table>*@
+
+<div class="br-mainpanel">
+
+    <div class="br-pagetitle">
+        <div>
+            <h1>@AdminResources.contact</h1>
+        </div>
+    </div><!-- d-flex -->
+
+
+    <div class="br-pagebody">
+        <div class="br-section-wrapper">
+            <div class="br-pageheader">
+                
+            </div><!-- br-pageheader -->
+
+            <div class="table-wrapper">
+
+                <table id="datatable1" class="table display responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Value)
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ContactType.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Value)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(AdminResources.edit, "EditContact", new { id = item.Id })
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div><!-- table-wrapper -->
+        </div>
+    </div>
+</div>

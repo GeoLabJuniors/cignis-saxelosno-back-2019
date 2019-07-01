@@ -5,23 +5,31 @@
     ViewBag.Title = AdminResources.aboutProject;
 }
 
-<h2>@AdminResources.aboutProject</h2>
 
-<div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Text)
-        </dd>
+<div class="br-mainpanel">
 
-    </dl>
+    <div class="br-pagetitle">
+        <div>
+            <h1>@AdminResources.aboutProject</h1>
+        </div>
+    </div><!-- d-flex -->
+
+
+    <div class="br-pagebody">
+        <div class="br-section-wrapper">
+
+            <dl class="dl-horizontal">
+                <dd>
+                    @Html.DisplayFor(model => model.Text)
+                </dd>
+            </dl>
+            <hr />
+            <p>
+                @Html.ActionLink(AdminResources.edit, "EditAboutProject", new { id = Model.Id })
+
+            </p>
+        </div>
+
+    </div>
 </div>
-<p>
-    @Html.ActionLink(AdminResources.edit, "EditAboutProject", new { id = Model.Id }) 
-    
-</p>

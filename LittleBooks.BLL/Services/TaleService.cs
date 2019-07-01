@@ -33,7 +33,7 @@ namespace LittleBooks.BLL.Services
                     LastName = x.Author.LastName
                 },
                 ImageUrl = x.ImageUrl,
-                CreateDate = DateTime.Now
+                CreateDate = x.CreateDate
             }).ToList();
 
             return data;

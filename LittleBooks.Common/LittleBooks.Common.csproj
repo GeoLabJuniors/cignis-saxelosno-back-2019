@@ -81,7 +81,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\AdminResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

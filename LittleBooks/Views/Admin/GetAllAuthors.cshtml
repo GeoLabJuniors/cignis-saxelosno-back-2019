@@ -4,51 +4,103 @@
     ViewBag.Title = AdminResources.authors;
 }
 
-    <h2>@AdminResources.authors</h2>
 
-<p>
-    @Html.ActionLink(AdminResources.createNew, "AddAuthor")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.About)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageFile)
-        </th>
+<div class="br-mainpanel">
 
-        <th></th>
-    </tr>
+    <div class="br-pagetitle">
+        <div>
+            <h1>@AdminResources.authors</h1>
+        </div>
+    </div><!-- d-flex -->
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.About)
-            </td>
-            <td>
-                <img src="@Url.Content(item.ImageUrl)" height="100" />
-            </td>
 
-            <td>
-                @Html.ActionLink(AdminResources.edit, "EditAuthor", new { id = item.Id }) |
+    <div class="br-pagebody">
+        <div class="br-section-wrapper">
+            <div class="br-pageheader">
+                <nav class="breadcrumb pd-0 mg-0 tx-12">
+                    <h6 class="breadcrumb-item">@Html.ActionLink(AdminResources.createNew, "AddAuthor")</h6>
 
-                @Html.ActionLink(AdminResources.delete, "DeleteAuthor", new { id = item.Id })
-            </td>
-        </tr>
-    }
+                </nav>
+            </div><!-- br-pageheader -->
 
-</table>
+            <div class="table-wrapper">
+
+                <table id="datatable1" class="table display responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LastName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.About)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ImageFile)
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.About)
+                                </td>
+                                <td>
+                                    <img src="@Url.Content(item.ImageUrl)" height="100" />
+                                </td>
+
+
+                                <td>
+                                    @*<h6 class="mg-l-10 bd bd-1 bd-info">*@
+                                    @Html.ActionLink(AdminResources.edit, "EditAuthor", new { id = item.Id }) ||
+
+                                    @Html.ActionLink(AdminResources.delete, "DeleteAuthor", new { id = item.Id })
+                                    @*</h6>*@
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div><!-- table-wrapper -->
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Samples/js/bracket.js"></script>
+<script>
+    $(function () {
+        'use strict';
+
+        $('#datatable1').DataTable({
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ items/page',
+            }
+        });
+
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+    });
+</script>
