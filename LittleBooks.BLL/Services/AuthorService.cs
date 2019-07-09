@@ -45,7 +45,7 @@ namespace LittleBooks.BLL.Services
                 Id = data.Id,
                 FirstName = data.FirstName,
                 LastName = data.LastName,
-                Tales = data.Tales.Select(t => new TaleModel
+                Tales = data.Tales.Where(d=>d.DeleteDate==null).Select(t => new TaleModel
                 {
                     Title = t.Title,
                     TaleLink = t.TaleLink,

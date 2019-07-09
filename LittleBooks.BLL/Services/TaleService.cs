@@ -42,7 +42,7 @@ namespace LittleBooks.BLL.Services
         public TaleViewModel GetTale(int id)
         {
             var tale = db.Tales.FirstOrDefault(x => x.Id == id);
-            var authorsList = db.Authors.Where(x=>x.DeleteDate==null).Select(x => new SelectListItem
+            var authorsList = db.Authors.Where(x => x.DeleteDate == null).Select(x => new SelectListItem
             {
                 Text = x.FirstName + " " + x.LastName,
                 Value = x.Id.ToString()
@@ -61,7 +61,7 @@ namespace LittleBooks.BLL.Services
             {
                 model.AuthorsList.FirstOrDefault(x => x.Value == tale.AuthorId.ToString()).Selected = true;
             }
-                       
+
 
             return model;
 
@@ -125,6 +125,45 @@ namespace LittleBooks.BLL.Services
             data.DeleteDate = DateTime.Now;
 
             db.SaveChanges();
+        }
+
+
+        public List<TaleModel> GetRandom3Tales()
+        {
+            List<TaleModel> data = db.Tales.Where(d => d.DeleteDate == null).Select(x => new TaleModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                TaleLink = x.TaleLink,
+                Author = new AuthorModel
+                {
+                    FirstName = x.Author.FirstName,
+                    LastName = x.Author.LastName
+                },
+                ImageUrl = x.ImageUrl,
+                CreateDate = x.CreateDate
+            }).ToList();
+
+
+            Random rand = new Random();
+
+            List<TaleModel> randTales = new List<TaleModel>();
+
+            int num = data.Count() >= 3 ? 3 : data.Count();
+
+
+            for (int i = num; i > 0; i--)
+            {
+                var a = data[rand.Next(0, data.Count())];
+                if (randTales.Contains(a))
+                {
+                    i++;
+                    continue;
+                }
+                randTales.Add(a);
+            }
+
+            return randTales;
         }
 
 

@@ -1,0 +1,126 @@
+﻿@model IEnumerable<LittleBooks.Common.Models.TaleModel>
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Catalogue";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>წიგნის სახელოსნო</title>
+    <meta name="description" content="პატარაობაში ადამიანები ოცნებობენ, ფიქრობენ, ესიზმრებათ უცნაური სიზრმები და ათასგვარ რამეს იგონებენ. მერე იზრდებიან და ყველაფერი სადღაც იკარგება. თითქოს ეს ყველაფერი არც ყოფილა. ამ ვებგვერდზე შეგიძლია ნახოთ წიგნები რომლებიც პატარა ბავშვებმა თავიანთი თანატოლებისა და უფროსებისათვის დაწერეს.">
+    <meta name="keywords" content="წიგნის სახელოსნო">
+    <meta name='author' content='Anano Aspanidze (მელა) - anano.aspanidze@geolab.edu.ge'>
+    <link rel="icon" href="../Style/images/logo.ico">
+
+    <!-- fb og tags  -->
+    <meta property="og:title" content="წიგნის სახელოსნო" />
+    <meta property="og:description" content="პატარაობაში ადამიანები ოცნებობენ, ფიქრობენ, ესიზმრებათ უცნაური სიზრმები და ათასგვარ რამეს იგონებენ. მერე იზრდებიან და ყველაფერი სადღაც იკარგება. თითქოს ეს ყველაფერი არც ყოფილა. ამ ვებგვერდზე შეგიძლია ნახოთ წიგნები რომლებიც პატარა ბავშვებმა თავიანთი თანატოლებისა და უფროსებისათვის დაწერეს." />
+    <!-- <meta property="fb:app_id" content="" />-->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://littlebooks.geolab.edu.ge/" />
+    <meta property="og:image" content="https://littlebooks.geolab.edu.ge/images/logo-bigger.png" />
+
+    <link rel="stylesheet" href="../Style/css/reset.min.css">
+    <link rel="stylesheet" href="../Style/css/fonts.css">
+
+    <link rel="stylesheet" type="text/css" href="../Style/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="../Style/slick/slick-theme.css" />
+    <link rel="stylesheet" href="../Style/css/main.css">
+</head>
+<body>
+
+    <!-- header, menu -->
+
+        <header class="mela-section relative">
+            <img id="menu-shape-1" src="../Style/images/menu-shape-1.png" alt="menu-shape-1">
+            <img id="menu-shape-2-sc" src="../Style/images/layer-xx.png" alt="menu-shape-2">
+            <img id="menu-shape-3" src="../Style/images/menu-shape-3.png" alt="menu-shape-3">
+ 
+    <!-- <img id="tsriala-1" data-gifffer="images/tsriala-1.gif" /> -->
+
+    <div class="flex menu-wrapper flex-align-center">
+        <a href="../Home/Index"><img id="logo" src="../Style/images/logo.svg" alt="წიგნის სახელოსნო"></a>
+        <nav class="sandro-font-regular">
+            <ul class="flex">
+                <li><a href="../About/Index">პროექტის შესახებ</a></li>
+                <li><a href="../Contact/Index">კონტაქტი</a></li>
+                <li><a href="../Home/Catalogue">წიგნები</a></li>
+                <li class="relative"><img id="search-icon" class="vertical-middle photo" src="../Style/images/search-icon.svg" alt="search-icon"> <input type="text" placeholder="საპოვნელა" class="search"></li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+    <main>
+        <section class="top catalogue flex justify-space-between sandro-font-regular">
+            <div class="featured-book">
+                <img src="../Style/images/books/ნიკოლოზ-ქალდანი.png" alt="წიგნი">
+                <h2>ნიკოლოზ ქალდანი<br> “დაძველებული მანქანა და ჭკვიანი ბიჭი”<br>  12.12.2019</h2>
+            </div>
+            <div class="featured-book">
+                <img src="../Style/images/books/ნიკოლოზ-ნარიმანიძე.png" alt="წიგნი">
+                <h2>ნიკოლოზ ნარიმანიძე<br> “ტექნოლოგიები და შემოდგომა”<br>  12.12.2019</h2>
+            </div>
+            <div class="featured-book">
+                <img src="../Style/images/books/მარიამ-იოსელიანი.png" alt="წიგნი">
+                <h2>მარიამ იოსელიანი<br> “ჰელენის სიზმარი”<br>  12.12.2019</h2>
+            </div>
+        </section>
+        <section class="bottom catalogue flex justify-space-between sandro-font-regular">
+            <div class="featured-book">
+                <img src="../Style/images/books/ნინო-ჯორბენაძე.png" alt="წიგნი">
+                <h2>
+                    ნინო ჯორვენაძე<br> “წუწუნა ხოჭო და
+                    დიდი გემის ისტორია”<br>  12.12.2019
+                </h2>
+            </div>
+            <div class="featured-book">
+                <img src="../Style/images/books/ქეთევან-ჩიკვილაძე.png" alt="წიგნი">
+                <h2>
+                    ქეთევან ჩიკვილაძე<br>“ახალი წელი და
+                    ანას დაბადების დღე”
+                    <br>  12.12.2019
+                </h2>
+            </div>
+            <div class="featured-book">
+                <img src="../Style/images/books/ხატია-ხუბუტია.png" alt="წიგნი">
+                <h2>ხატია ხუბუტია<br> ნახატები<br>  12.12.2019</h2>
+            </div>
+        </section>
+        <div class="switcher">
+            <p><a href="">1</a><a href="">2</a><a href="">3</a>...</p>
+        </div>
+
+    </main>
+
+    <footer class="sandro-font-regular flex mela-section flex-align-center">
+        <img src="../Style/images/Layer-35.png" alt="tsriala" class="tsriala-in-footer">
+        <img src="../Style/images/footer-shape-1.png" alt="footer-shape" class="footer-shape-1">
+        <img src="../Style/images/footer-shape-2.png" alt="footer-shape" class="footer-shape-2">
+        <div class="">
+            <img src="../Style/images/geolab-logo.png" alt="ჯეოლაბი" id="geolab-logo">
+            <img src="../Style/images/multi-biblioteka-logo.png" alt="თბილისის მულტიფუნქციური ბიბლიოთეკების გაერთიანება" id="biblio-logo">
+        </div>
+        <p>© პროდუქტი შექმნილია კომპანია "ჯეოლაბის" მიერ</p>
+        <p>გვეკონტაქტე: 032 566 77 898</p>
+    </footer>
+
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../Style/js/script.js"></script>
+</body>
+
+
+
+</html>
+

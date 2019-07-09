@@ -1,0 +1,560 @@
+
+/* #region  -- GLOBAL CSS */
+
+
+.sandro-font-regular {
+	font-family: "SandroUniversal-Regular";
+}
+
+.sandro-font-bold {
+	font-family: "SandroUniversal-Bold";
+}
+
+.flex {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+}
+
+.flex-align-center{
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+
+.vertical-middle {
+	vertical-align: middle;
+}
+.justify-space-between{
+	justify-content:space-between;
+}
+
+.flex-column {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+
+/*footer always at the bottom*/
+
+html {
+	height: 100%;
+}
+
+body {
+	position: relative;
+	margin: 0;
+	padding-bottom: 10px;
+	min-height: 100%;
+	color: #5d5757;
+}
+
+footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 10px;
+}
+
+
+.mela-section {
+	padding: 0 8%;
+}
+
+
+/* #endregion */
+
+
+
+/* #region  -- HEADER */
+
+
+body {
+	background-color: #F5EBE1;
+}
+
+header {
+	height: 300px;
+	position: relative;
+}
+
+header #menu-shape-1 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+header #menu-shape-2 {
+	position: absolute;
+	z-index: -2;
+	top: 127px;
+	left: 5%;
+	width: 57%;
+}
+header #menu-shape-2-sc {
+	position: absolute;
+	z-index: -4;
+	top: 127px;
+	left: 0;
+	height:1000px;
+	width: 100%;
+}
+
+header #menu-shape-3 {
+	position: absolute;
+	z-index: -3;
+	top: 115px;
+	left: 18%;
+	width: 61%;
+}
+header #menu-shape-3-sc{
+	position: absolute;
+	z-index: -3;
+	left:0;
+	height:1000px;
+	width: 100%;
+}
+header #menu-shape-4{
+	width:200px;
+	position: absolute;
+	top:760px;
+	right:100px;
+}
+
+
+header #tsriala-1 {
+	position: absolute;
+	width: 356px;
+	top: 154px;
+	z-index: -2;
+	left: 0;
+}
+
+
+.menu-wrapper {
+	padding-top: 15px;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+
+#logo {
+	width: 170px;
+}
+
+.menu-wrapper ul.flex {
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	font-size: 16px;
+	margin: 0 50px;
+}
+
+#search-icon {
+	width: 18px;
+	margin: 0 16px 0 20px;
+}
+.relative{
+	position: relative;
+}
+.search{
+	border: 0;
+	background-color: transparent;
+	font-family: "SandroUniversal-Bold";
+	position: absolute;
+	top:0;
+	right:-250%;
+    opacity: 0; 
+	width:0px;
+	transition: opacity 0.5s ease-out;
+    overflow: hidden;
+	color:#5d5757;
+	outline: none;
+}
+.active{
+	opacity: 1;
+    width:auto;
+}
+
+.menu-wrapper ul li:not(:last-child) {
+	margin-right: 20px;
+}
+
+/* #endregion */
+
+/* #region == BOOKS - catalogue */
+	.catalogue{
+		margin: 200px;
+		margin-bottom:350px;
+	}
+	.bottom.catalogue{
+		margin-bottom:135px;
+	}
+	.catalogue .featured-book {
+		width: 30%;
+		text-align:center;
+		
+
+	}
+	.catalogue .featured-book img{
+		width:240px;
+		height:auto;
+		margin-bottom:20px;
+	}
+	.switcher{
+		text-align:center;
+		margin-bottom:300px;
+	}
+	.switcher p a{
+		margin:0 10px;
+	}
+	.tsriala-in-footer{
+		position:absolute;
+		bottom:110px;
+	}
+/* #endregion == books- catalogue */
+
+/* #region == BOOKS - contact */
+	.address{
+		margin:140px;
+		font-size:19px;
+		padding-bottom: 500px;
+	}
+	.adress-box{
+		width:520px;
+		height: auto;
+		padding-top: 150px;
+	}
+	.adress-box .cn-content{
+		position: absolute;
+		left: 0;
+		z-index:1;
+	}
+	.adress-box .cn-content p {
+		margin: 50px 80px;
+		display: flex;
+		justify-content: space-between;
+		padding:10 50px;
+		z-index:2; 
+	}
+	.adress-box .cn-content p img{
+		margin-right:100px;
+	}
+	#location{
+		width: 21.3px;
+		height:31.01px;
+	}
+	#phone{
+		width:17.07px;
+		height:28.45px;
+	}
+	#email {
+		width:25.2px;
+		height:19.32px;
+	}
+	#facebook{
+		width:14.42px;
+		height:30.19px;
+	}
+	.map{
+		width: 100%;
+		position: relative;
+		padding-bottom: 1000px;
+		
+	}
+	.map .ruka{
+		position:absolute;
+		width: 70%;
+		left:50%;
+		transform: translateX(-50%);
+	}
+	.tsriala-rukaze{
+		position: absolute;
+		right:30%;
+		top: -12.5%;
+	}
+
+/* #endregion == BOOKS -contact */
+
+/* #region  == BOOKS - main page */
+
+.books-wrapper {
+	margin-top: 245px;
+	padding: 0 11% 0 17%;
+	margin-bottom: 270px;
+}
+
+.book {
+	background-repeat: no-repeat;
+	background-position: right;
+	width: 49%;
+	background-size: 75%;
+	position: relative;
+}
+
+.book:nth-of-type(2n)
+{
+	-ms-flex-item-align: end;
+	    align-self: flex-end;
+}
+
+.book-text {
+	width: 52%;
+	padding: 2% 15% 2% 3%;
+	line-height: 1.2;
+}
+
+.book-img-url {
+	width: 48%;
+}
+
+.about {
+	font-family: "SandroUniversal-Regular";
+	background-repeat:no-repeat;
+}
+.about h1 {
+	text-align:center;
+	font-size:30px;
+	margin:80px 0;
+}
+.text-area{
+	font-size:16px;
+	margin: 0 150px;
+	line-height:19px;
+	text-align:left;
+}
+.gallery{
+	width: 85%;
+	margin:500px 100px;
+	margin-bottom: 300px;
+	height:300px;
+}
+.absolute-photo{
+	position:absolute;
+	z-index:1;
+	top:10%;
+	left:20%;
+}
+.absolute{
+	position:absolute
+}
+
+.book-img {
+	width: 100%;
+}
+
+
+.book-text .book-author {
+	font-size: 20px;
+}
+
+.book-text .book-title, .book-text .book-date{
+	font-size: 17px;
+	padding-top: 10px;
+}
+
+.img-background {
+	position: absolute;
+	z-index: -1;
+}
+
+.book-1 .img-background {
+	right: 0;
+	width: 75%;
+}
+
+.book-2 .img-background {
+	right: 0;
+	width: 81%;
+}
+
+.book-2 .book-text {
+	padding: 2% 22% 2% 3%;
+}
+
+.book-3 .img-background {
+	right: 0;
+	width: 69%;
+	top: 1%;
+}
+
+.book-3 .book-text {
+	padding: 6% 15% 2% 3%;
+}
+
+/* #endregion */
+
+
+
+/* #region  == FOOTER */
+
+footer {
+	background-image: url('../images/footer-background.png');
+	background-size: 100% 100%;
+	height: 75px;
+	background-repeat: no-repeat;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+footer > p {
+	line-height: 75px;
+}
+
+footer .footer-shape-1 {
+	position: absolute;
+	bottom: 74px;
+	z-index: -2;
+	left: 0;
+	width: 45%;
+}
+
+footer .footer-shape-2 {
+	position: absolute;
+	bottom: 0;
+	z-index: -1;
+	left: 8%;
+	width: 63%;
+}
+
+#tsriala-2 {
+	width: 300px;
+	position: absolute;
+	bottom: 0;
+	/* bottom: -32px; ფუტერის ქვემოთ თეთრ ხაზს ტოვებს */
+	right: 3%;
+}
+
+footer #geolab-logo {
+	height: 35px;
+	margin-right: 15px;
+}
+
+footer #biblio-logo {
+	height: 41px;
+}
+
+
+/* #endregion */
+
+
+
+/* #region  == AUTHOR */
+
+.author-wrapper > .image-wrapper {
+	width: 45%;
+	position: relative;
+}
+
+.author-wrapper >.bio-wrapper {
+	width: 35%;
+	margin-left: 5%;
+}
+
+.author-wrapper img {
+	width: 100%;
+}
+
+.author-wrapper {
+	margin-top: 130px;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	padding: 0 12%;
+}
+
+.author-wrapper > .image-wrapper #author-image {
+	position: absolute;
+	top: 15px;
+	left: 33px;
+	width: 87%;
+}
+
+.author-wrapper > .bio-wrapper h1 {
+	font-size: 32px;
+	line-height: 1.2;
+	margin-bottom: 50px;
+}
+
+.author-wrapper > .bio-wrapper .bio {
+	font-size: 17px;
+	line-height: 2;
+	height: 210px;
+	overflow: auto;
+	padding-right: 20px;
+}
+
+.author-wrapper > .bio-wrapper .bio::-webkit-scrollbar {
+	width: 12px;
+}
+
+/* Track */
+.author-wrapper > .bio-wrapper .bio::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+.author-wrapper > .bio-wrapper .bio::-webkit-scrollbar-thumb {
+	background: #D4C1A5;
+	border-radius: 5px;
+}
+
+
+.author-works-wrapper {
+	margin-top: 70px;
+	margin-bottom: 270px;
+	padding: 0 12%;
+}
+
+
+.author-works-wrapper h3 {
+	margin-bottom: 50px;
+}
+
+.author-works-wrapper .book {
+	width: 36%;
+}
+
+
+.author-works-wrapper .book-4 .img-background {
+	right: 6%;
+	width: 73%;
+	top: -3%;
+}
+
+.author-works-wrapper .book-4 .book-text {
+	padding: 6% 13% 2% .5%;
+	line-height: 1.6;
+}
+
+
+.author-works-wrapper #tsriala-2 {
+	width: 300px;
+	position: absolute;
+	bottom: 110px;
+	right: 8%;
+}
+
+.author-works-wrapper .tsriala-bottom {
+	position: absolute;
+	right: 13%;
+	bottom: 133px;
+	z-index: -2;
+	width: 170px;
+}
+
+
+
+/* #endregion */
+.z-index-1{
+	z-index:1;
+}

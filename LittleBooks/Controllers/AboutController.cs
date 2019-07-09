@@ -22,8 +22,7 @@ namespace LittleBooks.Controllers
         {
             var data = aboutService.GetAboutProject();
 
-            return Json(data, JsonRequestBehavior.AllowGet);
-
+            return View(data);
         }
 
         

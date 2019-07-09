@@ -21,7 +21,7 @@ namespace LittleBooks.Controllers
         {
             var data = contactService.GetAll();
 
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return View(data);
         }
 
         

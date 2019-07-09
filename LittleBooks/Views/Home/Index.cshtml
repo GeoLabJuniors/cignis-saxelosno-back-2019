@@ -1,0 +1,163 @@
+﻿@model IEnumerable<LittleBooks.Common.Models.TaleModel>
+@{ 
+    var first = Model.ToList()[0];
+    var second = Model.ToList()[1];
+    var third = Model.ToList()[2];
+}
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>წიგნის სახელოსნო</title>
+    <meta name="description" content="პატარაობაში ადამიანები ოცნებობენ, ფიქრობენ, ესიზმრებათ უცნაური სიზრმები და ათასგვარ რამეს იგონებენ. მერე იზრდებიან და ყველაფერი სადღაც იკარგება. თითქოს ეს ყველაფერი არც ყოფილა. ამ ვებგვერდზე შეგიძლია ნახოთ წიგნები რომლებიც პატარა ბავშვებმა თავიანთი თანატოლებისა და უფროსებისათვის დაწერეს.">
+    <meta name="keywords" content="წიგნის სახელოსნო">
+    <meta name='author' content='Anano Aspanidze (მელა) - anano.aspanidze@geolab.edu.ge'>
+    <link rel="icon" href="~/Style/images/logo.ico">
+
+    <!-- fb og tags  -->
+    <meta property="og:title" content="წიგნის სახელოსნო" />
+    <meta property="og:description" content="პატარაობაში ადამიანები ოცნებობენ, ფიქრობენ, ესიზმრებათ უცნაური სიზრმები და ათასგვარ რამეს იგონებენ. მერე იზრდებიან და ყველაფერი სადღაც იკარგება. თითქოს ეს ყველაფერი არც ყოფილა. ამ ვებგვერდზე შეგიძლია ნახოთ წიგნები რომლებიც პატარა ბავშვებმა თავიანთი თანატოლებისა და უფროსებისათვის დაწერეს." />
+    <!-- <meta property="fb:app_id" content="" />-->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://littlebooks.geolab.edu.ge/" />
+    <meta property="og:image" content="http://littlebooks.geolab.edu.ge/images/logo-bigger.png" />
+
+    <link rel="stylesheet" href="~/Style/css/reset.min.css">
+    <link rel="stylesheet" href="~/Style/css/fonts.css">
+    <link rel="stylesheet" href="~/Style/css/main.css">
+</head>
+<body>
+
+    <!-- header, menu -->
+
+    <header class="mela-section">
+        <img id="menu-shape-1" src="~/Style/images/menu-shape-1.png" alt="menu-shape-1">
+        <img id="menu-shape-2" src="~/Style/images/menu-shape-2.png" alt="menu-shape-2">
+        <img id="menu-shape-3" src="~/Style/images/menu-shape-3.png" alt="menu-shape-3">
+        <img id="tsriala-1" src="~/Style/images/tsriala-1.gif" alt="წრიალა-1">
+        <!-- <img id="tsriala-1" data-gifffer="images/tsriala-1.gif" /> -->
+
+        <div class="flex menu-wrapper flex-align-center">
+            <a href="../Home/Index"><img id="logo" src="~/Style/images/logo.svg" alt="წიგნის სახელოსნო"></a>
+            <nav class="sandro-font-regular">
+                <ul class="flex">
+                    <li><a href="../About/Index">პროექტის შესახებ</a></li>
+                    <li><a href="../Contact/Index">კონტაქტი</a></li>
+                    <li><a href="../Home/Catalogue">წიგნები</a></li>
+                    <li class="relative"><img id="search-icon" class="vertical-middle photo" src="~/Style/images/search-icon.svg" alt="search-icon"> <input type="text" placeholder="საპოვნელა" class="search"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- main section, books -->
+
+    <section class="books-wrapper mela-section flex flex-column">
+
+       
+        
+            <div class="book flex flex-align-center book-1">
+                <a href="@first.TaleLink" target="_blank" class="book-img-url">
+                    <img src="@Url.Content(first.ImageUrl)" alt="@first.Title" class="book-img" />
+                </a>
+                <div class="book-text sandro-font-regular">
+                    <h3 class="book-author sandro-font-bold">
+                        <a href="#">
+                            @first.Author.FirstName
+
+                            @first.Author.LastName
+                        </a>
+                    </h3>
+                    <h4 class="book-title"><a href="@first.TaleLink" target="_blank">“@first.Title”</a></h4>
+                    <p class="book-date">@first.CreateDate</p>
+                </div>
+                <img src="~/Style/images/book-1-back.png" alt="book-background" class="img-background">
+            </div>
+
+            <div class="book flex flex-align-center book-2">
+                <a href="@second.TaleLink" target="_blank" class="book-img-url">
+                    <img src="@Url.Content(second.ImageUrl)" alt="@second.Title" class="book-img">
+                </a>
+                <div class="book-text sandro-font-regular">
+                    <h3 class="book-author sandro-font-bold">
+                        <a href="#">
+                            @second.Author.FirstName
+
+                            @second.Author.LastName
+                        </a>
+                    </h3>
+                    <h4 class="book-title"><a href="@second.TaleLink" target="_blank">“@second.Title”</a></h4>
+                    <p class="book-date">@first.CreateDate</p>
+                </div>
+                <img src="~/Style/images/book-2-back.png" alt="book-background" class="img-background">
+            </div>
+
+            <div class="book flex flex-align-center book-3">
+                <a href="@third.TaleLink" target="_blank" class="book-img-url">
+                    <img src="@Url.Content(third.ImageUrl)" alt="@third.Title" class="book-img">
+                </a>
+                <div class="book-text sandro-font-regular">
+                    <h3 class="book-author sandro-font-bold">
+                        <a href="#">
+                            @third.Author.FirstName
+
+                            @third.Author.LastName
+                        </a>
+                    </h3>
+                    <h4 class="book-title"><a href="@third.TaleLink" target="_blank">“@third.Title”</a></h4>
+                    <p class="book-date">@third.CreateDate</p>
+                </div>
+                <img src="~/Style/images/book-3-back.png" alt="book-background" class="img-background">
+            </div>
+        
+
+
+
+    </section>
+
+
+
+    <!-- footer -->
+
+    <footer class="sandro-font-regular flex mela-section flex-align-center">
+        <img src="~/Style/images/footer-shape-1.png" alt="footer-shape" class="footer-shape-1">
+        <img src="~/Style/images/footer-shape-2.png" alt="footer-shape" class="footer-shape-2">
+        <img id="tsriala-2" src="~/Style/images/tsriala-2.gif" alt="წრიალა-2">
+        <div class="">
+            <img src="~/Style/images/geolab-logo.png" alt="ჯეოლაბი" id="geolab-logo">
+            <img src="~/Style/images/multi-biblioteka-logo.png" alt="თბილისის მულტიფუნქციური ბიბლიოთეკების გაერთიანება" id="biblio-logo">
+        </div>
+        <p>© პროდუქტი შექმნილია კომპანია "ჯეოლაბის" მიერ</p>
+        <p>გვეკონტაქტე: 032 566 77 898</p>
+    </footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+
+    </script>
+    <!-- <script type="text/javascript" src="../Style/js/gifffer.min.js"></script> -->
+    <script type="text/javascript" src="~/Style/js/script.js"></script>
+
+
+
+</body>
+
+
+
+</html>
+
+

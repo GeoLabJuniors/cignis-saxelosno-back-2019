@@ -1,0 +1,61 @@
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "SandroUniversal-Bold";
+  src: url("../fonts/SandroUniversal-Bold/SandroUniversal-Bold.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/SandroUniversal-Bold/SandroUniversal-Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/SandroUniversal-Bold/SandroUniversal-Bold.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/SandroUniversal-Bold/SandroUniversal-Bold.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/SandroUniversal-Bold/SandroUniversal-Bold.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/SandroUniversal-Bold/SandroUniversal-Bold.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/SandroUniversal-Bold/SandroUniversal-Bold.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "SandroUniversal-BoldItalic";
+  src: url("../fonts/SandroUniversal-BoldItalic/SandroUniversal-BoldItalic.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/SandroUniversal-BoldItalic/SandroUniversal-BoldItalic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/SandroUniversal-BoldItalic/SandroUniversal-BoldItalic.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/SandroUniversal-BoldItalic/SandroUniversal-BoldItalic.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/SandroUniversal-BoldItalic/SandroUniversal-BoldItalic.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/SandroUniversal-BoldItalic/SandroUniversal-BoldItalic.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/SandroUniversal-BoldItalic/SandroUniversal-BoldItalic.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "SandroUniversal-Italic";
+  src: url("../fonts/SandroUniversal-Italic/SandroUniversal-Italic.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/SandroUniversal-Italic/SandroUniversal-Italic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/SandroUniversal-Italic/SandroUniversal-Italic.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/SandroUniversal-Italic/SandroUniversal-Italic.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/SandroUniversal-Italic/SandroUniversal-Italic.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/SandroUniversal-Italic/SandroUniversal-Italic.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/SandroUniversal-Italic/SandroUniversal-Italic.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "SandroUniversal-Regular";
+  src: url("../fonts/SandroUniversal-Regular/SandroUniversal-Regular.eot"); /* IE9 Compat Modes */
+  src: url("../fontsSandroUniversal-Regular//SandroUniversal-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/SandroUniversal-Regular/SandroUniversal-Regular.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/SandroUniversal-Regular/SandroUniversal-Regular.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/SandroUniversal-Regular/SandroUniversal-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/SandroUniversal-Regular/SandroUniversal-Regular.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/SandroUniversal-Regular/SandroUniversal-Regular.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
