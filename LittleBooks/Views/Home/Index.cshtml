@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<LittleBooks.Common.Models.TaleModel>
-@{ 
-    var first = Model.ToList()[0];
-    var second = Model.ToList()[1];
-    var third = Model.ToList()[2];
-}
+
 @{
     Layout = null;
 }
@@ -65,15 +61,17 @@
 
     <section class="books-wrapper mela-section flex flex-column">
 
-       
-        
+
+        @if (Model.ToList().Count() > 0)
+        {
+            var first = Model.ToList()[0];
             <div class="book flex flex-align-center book-1">
                 <a href="@first.TaleLink" target="_blank" class="book-img-url">
                     <img src="@Url.Content(first.ImageUrl)" alt="@first.Title" class="book-img" />
                 </a>
                 <div class="book-text sandro-font-regular">
                     <h3 class="book-author sandro-font-bold">
-                        <a href="@Url.Action("AuthorPage",new { id=first.Author.Id})">
+                        <a href="@Url.Action("AuthorPage", new { id = first.Author.Id })">
                             @first.Author.FirstName
 
                             @first.Author.LastName
@@ -84,6 +82,11 @@
                 </div>
                 <img src="~/Style/images/book-1-back.png" alt="book-background" class="img-background">
             </div>
+        }
+        @if (Model.ToList().Count() > 1)
+        {
+
+            var second = Model.ToList()[1];
 
             <div class="book flex flex-align-center book-2">
                 <a href="@second.TaleLink" target="_blank" class="book-img-url">
@@ -91,25 +94,29 @@
                 </a>
                 <div class="book-text sandro-font-regular">
                     <h3 class="book-author sandro-font-bold">
-                        <a href="@Url.Action("AuthorPage",new { id=second.Author.Id})">
+                        <a href="@Url.Action("AuthorPage", new { id = second.Author.Id })">
                             @second.Author.FirstName
 
                             @second.Author.LastName
                         </a>
                     </h3>
                     <h4 class="book-title"><a href="@second.TaleLink" target="_blank">“@second.Title”</a></h4>
-                    <p class="book-date">@first.CreateDate</p>
+                    <p class="book-date">@second.CreateDate</p>
                 </div>
                 <img src="~/Style/images/book-2-back.png" alt="book-background" class="img-background">
             </div>
+        }
 
+        @if (Model.ToList().Count() > 2)
+        {
+            var third = Model.ToList()[2];
             <div class="book flex flex-align-center book-3">
                 <a href="@third.TaleLink" target="_blank" class="book-img-url">
                     <img src="@Url.Content(third.ImageUrl)" alt="@third.Title" class="book-img">
                 </a>
                 <div class="book-text sandro-font-regular">
                     <h3 class="book-author sandro-font-bold">
-                        <a href="@Url.Action("AuthorPage",new { id=third.Author.Id})">
+                        <a href="@Url.Action("AuthorPage", new { id = third.Author.Id })">
                             @third.Author.FirstName
 
                             @third.Author.LastName
@@ -119,8 +126,8 @@
                     <p class="book-date">@third.CreateDate</p>
                 </div>
                 <img src="~/Style/images/book-3-back.png" alt="book-background" class="img-background">
-            </div>
-        
+            </div>}
+
 
 
 

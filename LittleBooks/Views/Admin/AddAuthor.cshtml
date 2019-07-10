@@ -5,6 +5,8 @@
     ViewBag.Title = AdminResources.addAuthor;
 }
 
+<script src="~/CKeditor/ckeditor.js"></script>
+
 
 @using (Html.BeginForm("AddAuthor", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -89,6 +91,12 @@
             tooltip: false
         })
     });
+</script>
+
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('Editor');
 </script>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>

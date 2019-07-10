@@ -5,6 +5,8 @@
     ViewBag.Title = AdminResources.editAuthor;
 }
 
+<script src="~/CKeditor/ckeditor.js"></script>
+
 @using (Html.BeginForm("EditAuthor", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -42,7 +44,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.About, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    
+
                     @Html.TextAreaFor(model => model.About, new { @class = "form-control", id = "Editor", @cols = 50, @rows = 10 })
                     @Html.ValidationMessageFor(model => model.About, "", new { @class = "text-danger" })
 
@@ -81,7 +83,11 @@
     </div>
 }
 
-
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('Editor');
+</script>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
