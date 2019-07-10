@@ -147,9 +147,9 @@ namespace LittleBooks.Controllers
 
         }
 
-        public ActionResult EditAboutProject()
+        public ActionResult EditAboutProject(int id)
         {
-            var data=aboutService.GetAboutProject();
+            var data=aboutService.GetAboutProject(id);
 
             return View(data);
         }

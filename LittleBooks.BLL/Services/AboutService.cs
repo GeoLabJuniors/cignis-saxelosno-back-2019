@@ -17,7 +17,6 @@ namespace LittleBooks.BLL.Services
             db = new LittleBooksEntities();
         }
 
-
         public AboutProjectModel GetAboutProject()
         {
             var data = db.AboutProjects.FirstOrDefault();
@@ -31,9 +30,22 @@ namespace LittleBooks.BLL.Services
             return model;
         }
 
+        public AboutProjectModel GetAboutProject(int id)
+        {
+            var data = db.AboutProjects.FirstOrDefault(x => x.Id == id);
+
+            AboutProjectModel model = new AboutProjectModel
+            {
+                Id = data.Id,
+                Text = data.Text
+            };
+
+            return model;
+        }
+
         public void Edit(AboutProjectModel about)
         {
-            var data = db.AboutProjects.FirstOrDefault();
+            var data = db.AboutProjects.FirstOrDefault(x => x.Id==about.Id);
             data.Text = about.Text;
 
             db.SaveChanges();

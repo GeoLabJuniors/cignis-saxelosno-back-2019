@@ -42,7 +42,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.About, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <textarea rows="10" cols="50" name="About" class="form-control"></textarea>
+                    <textarea class="form-control" id="Editor" name="About" rows="10" cols="50"></textarea>
                     @Html.ValidationMessageFor(model => model.About, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -57,9 +57,9 @@
 
 
             <div class="form-group">
-                    <div class="col-sm-6 col-md-3 mg-t-50">
-                        <button class="btn btn-purple btn-block mg-b-10">@AdminResources.create</button>
-                    </div><!-- col-sm-3 -->
+                <div class="col-sm-6 col-md-3 mg-t-50">
+                    <button class="btn btn-purple btn-block mg-b-10">@AdminResources.create</button>
+                </div><!-- col-sm-3 -->
             </div>
         </div>
 
