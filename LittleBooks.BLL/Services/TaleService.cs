@@ -143,28 +143,28 @@ namespace LittleBooks.BLL.Services
                 },
                 ImageUrl = x.ImageUrl,
                 CreateDate = x.CreateDate
-            }).ToList();
+            }).OrderBy(g=>Guid.NewGuid()).Take(3).ToList();
 
 
-            Random rand = new Random();
+            //Random rand = new Random();
 
-            List<TaleModel> randTales = new List<TaleModel>();
+            //List<TaleModel> randTales = new List<TaleModel>();
 
-            int num = data.Count() >= 3 ? 3 : data.Count();
+            //int num = data.Count() >= 3 ? 3 : data.Count();
 
 
-            for (int i = num; i > 0; i--)
-            {
-                var a = data[rand.Next(0, data.Count())];
-                if (randTales.Contains(a))
-                {
-                    i++;
-                    continue;
-                }
-                randTales.Add(a);
-            }
-
-            return randTales;
+            //for (int i = num; i > 0; i--)
+            //{
+            //    var a = data[rand.Next(0, data.Count())];
+            //    if (randTales.Contains(a))
+            //    {
+            //        i++;
+            //        continue;
+            //    }
+            //    randTales.Add(a);
+            //}
+           
+            return data;
         }
 
 
