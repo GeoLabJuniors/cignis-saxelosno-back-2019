@@ -137,6 +137,7 @@ namespace LittleBooks.BLL.Services
                 TaleLink = x.TaleLink,
                 Author = new AuthorModel
                 {
+                    Id=x.Author.Id,
                     FirstName = x.Author.FirstName,
                     LastName = x.Author.LastName
                 },

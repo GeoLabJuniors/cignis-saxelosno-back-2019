@@ -48,12 +48,12 @@
         <!-- <img id="tsriala-1" data-gifffer="images/tsriala-1.gif" /> -->
 
         <div class="flex menu-wrapper flex-align-center">
-            <a href="../Home/Index"><img id="logo" src="~/Style/images/logo.svg" alt="წიგნის სახელოსნო"></a>
+            <a href="~/Home/Index"><img id="logo" src="~/Style/images/logo.svg" alt="წიგნის სახელოსნო"></a>
             <nav class="sandro-font-regular">
                 <ul class="flex">
-                    <li><a href="../About/Index">პროექტის შესახებ</a></li>
-                    <li><a href="../Contact/Index">კონტაქტი</a></li>
-                    <li><a href="../Home/Catalogue">წიგნები</a></li>
+                    <li><a href="~/About/Index">პროექტის შესახებ</a></li>
+                    <li><a href="~/Contact/Index">კონტაქტი</a></li>
+                    <li><a href="~/Home/Catalogue">წიგნები</a></li>
                     <li class="relative"><img id="search-icon" class="vertical-middle photo" src="~/Style/images/search-icon.svg" alt="search-icon"> <input type="text" placeholder="საპოვნელა" class="search"></li>
                 </ul>
             </nav>
@@ -73,7 +73,7 @@
                 </a>
                 <div class="book-text sandro-font-regular">
                     <h3 class="book-author sandro-font-bold">
-                        <a href="#">
+                        <a href="@Url.Action("AuthorPage",new { id=first.Author.Id})">
                             @first.Author.FirstName
 
                             @first.Author.LastName
@@ -91,7 +91,7 @@
                 </a>
                 <div class="book-text sandro-font-regular">
                     <h3 class="book-author sandro-font-bold">
-                        <a href="#">
+                        <a href="@Url.Action("AuthorPage",new { id=second.Author.Id})">
                             @second.Author.FirstName
 
                             @second.Author.LastName
@@ -109,7 +109,7 @@
                 </a>
                 <div class="book-text sandro-font-regular">
                     <h3 class="book-author sandro-font-bold">
-                        <a href="#">
+                        <a href="@Url.Action("AuthorPage",new { id=third.Author.Id})">
                             @third.Author.FirstName
 
                             @third.Author.LastName
