@@ -137,13 +137,13 @@ namespace LittleBooks.BLL.Services
                 TaleLink = x.TaleLink,
                 Author = new AuthorModel
                 {
-                    Id=x.Author.Id,
+                    Id = x.Author.Id,
                     FirstName = x.Author.FirstName,
                     LastName = x.Author.LastName
                 },
                 ImageUrl = x.ImageUrl,
                 CreateDate = x.CreateDate
-            }).OrderBy(g=>Guid.NewGuid()).Take(3).ToList();
+            }).OrderBy(g => Guid.NewGuid()).Take(3).ToList();
 
 
             //Random rand = new Random();
@@ -163,10 +163,35 @@ namespace LittleBooks.BLL.Services
             //    }
             //    randTales.Add(a);
             //}
-           
+
             return data;
         }
+        public List<TaleModel> GetAndSearchTales(string search)
+        {
+            var data = db.Tales.Where
+                   (
+                   x => x.Title.Contains(search) ||
+                   x.Author.FirstName.Contains(search) ||
+                   x.Author.LastName.Contains(search) 
+                   );
+            var model = data.Select(x => new TaleModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                TaleLink=x.TaleLink,
+                Author = new AuthorModel
+                {
+                    Id = x.Author.Id,
+                    FirstName = x.Author.FirstName,
+                    LastName = x.Author.LastName
+                },
+                ImageUrl = x.ImageUrl,
+                CreateDate = x.CreateDate
+            }).ToList();
 
+            return model;
+        }
+    
 
         private string SaveImageAndGetUrl(HttpPostedFileBase ImageFile)
         {

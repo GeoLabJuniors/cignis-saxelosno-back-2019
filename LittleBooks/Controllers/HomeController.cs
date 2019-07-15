@@ -27,9 +27,10 @@ namespace LittleBooks.Controllers
            
         }
 
-        public ActionResult Catalogue()
+        public ActionResult Catalogue(string search="")
         {
-            var data = taleService.GetAllTales();
+
+            var data = taleService.GetAndSearchTales(search);
 
             return View(data);
         }
