@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using LittleBooks.BLL.Services;
+using LittleBooks.Common.Filters;
 using LittleBooks.Common.Models;
 
 namespace LittleBooks.Controllers
@@ -18,7 +19,7 @@ namespace LittleBooks.Controllers
             accountService = new AccountService();
         }
         // GET: Account
-        
+        [LoginFilter]
         public ActionResult Login()
         {
             return View();
@@ -35,7 +36,6 @@ namespace LittleBooks.Controllers
 
             else
             {
-
                 Session["LogedUser"] = user;
                 return RedirectToAction("Index", "Admin");
             }

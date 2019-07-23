@@ -174,7 +174,7 @@ namespace LittleBooks.BLL.Services
                    x.Author.FirstName.Contains(search) ||
                    x.Author.LastName.Contains(search) 
                    );
-            var model = data.Select(x => new TaleModel
+            var model = data.Where(d => d.DeleteDate == null).Select(x => new TaleModel
             {
                 Id = x.Id,
                 Title = x.Title,

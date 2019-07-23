@@ -53,7 +53,7 @@
                     <li><a href="~/About/Index">პროექტის შესახებ</a></li>
                     <li><a href="~/Contact/Index">კონტაქტი</a></li>
                     <li><a href="~/Home/Catalogue">წიგნები</a></li>
-                    <li class="relative"><img id="search-icon" class="vertical-middle photo" src="~/Style/images/search-icon.svg" alt="search-icon"> <input type="text" id="search-input" placeholder="საპოვნელა"  class="search"></li>
+                    <li class="relative"><img id="search-icon" class="vertical-middle photo" src="~/Style/images/search-icon.svg" alt="search-icon"> <input type="text" id="search-input" placeholder="საპოვნელა" class="search"></li>
                 </ul>
             </nav>
         </div>
@@ -124,34 +124,32 @@
 
 </html>
 <script>
-$("#search-input").keyup(function(event) {
-    if (event.keyCode === 13) {// აქ მოწმდება, ენტერს დავაკლიკე თუ არა
-        var searchInput = $("#search-input").val();  // აქ შეგიძლია დაწერო ის კოდი, რაც უნდა შესრულდეა ენტერზე კლიკის შემდეგ.
-        // ამ კოდს ქვემოთ დაგიწერ.
-    }
-});
-$.ajax({
+    $("#search-input").keyup(function (event) {
+        if (event.keyCode === 13) {// აქ მოწმდება, ენტერს დავაკლიკე თუ არა
+            var searchInput = $("#search-input").val();  // აქ შეგიძლია დაწერო ის კოდი, რაც უნდა შესრულდეა ენტერზე კლიკის შემდეგ.
+            $.ajax({
                 async: true,
                 type: "Get",     // აქ თუ ინფორმაცია მოგაქვს, get წერია, თუ მიგაქვს, post. დიდად მნიშვნელობა არც აქვს, ისე
                 url: "/Home/Catalogue",   // აქ იქნება შენი url - კონტროლერი / მეთოდი
 
-              // თუ მასივებს ვატან დატაში, უნდა ეწეროს კიდე 1 ხაზი - traditional: true       
+                // თუ მასივებს ვატან დატაში, უნდა ეწეროს კიდე 1 ხაზი - traditional: true
 
                 data: {
                     'search': searchInput // აქ იქნება მეთოდის არგუმენტები. ბრჭყალებში იწერება შენი მეთოდის არგუმენტის სახელი, ორწერტილის მერე - რასაც ატან. თუ სხვა არგუმენტების გაქვს, მძიმეს წერ და იგივენაირად ავსებ დანარჩენებს
 
                 },
 
-                success: function (data) { 
-                   // ეს შენ არ გჭირდება, მაგრამ აქ შემოვა ფუნქცია, თუ მეთოდი პასუხს დააბრუნებს ჯეისონად
+                success: function (data) {
+                    // ეს შენ არ გჭირდება, მაგრამ აქ შემოვა ფუნქცია, თუ მეთოდი პასუხს დააბრუნებს ჯეისონად
                 },
 
                 error: function () {
-                        // აქ შემოვა, თუ ერორი იქნება
-                        }
+                    // აქ შემოვა, თუ ერორი იქნება
+                }
 
-            })
-
+            })// ამ კოდს ქვემოთ დაგიწერ.
+        }
+    });
 
 </script>
 

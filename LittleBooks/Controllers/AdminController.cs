@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LittleBooks.BLL.Services;
+using LittleBooks.Common.Filters;
 using LittleBooks.Common.Models;
 
 namespace LittleBooks.Controllers
 {
+    //[LoginFilter]
     public class AdminController : Controller
     {
         TaleService taleService;

@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Models\AboutProjectModel.cs" />
     <Compile Include="Models\AuthorModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
