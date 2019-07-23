@@ -28,5 +28,22 @@ namespace LittleBooks.BLL.Services
             return data;
 
         }
+
+        public bool GetLogin(LoginModel loginModel)
+        {
+            LoginUser user = db.LoginUsers.FirstOrDefault(x => x.Email == loginModel.Email && x.Password == loginModel.Password);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            else
+            {
+               
+                return true;
+            }
+            
+        }
     }
 }

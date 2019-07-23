@@ -1,0 +1,47 @@
+﻿@model LittleBooks.Common.Models.LoginModel
+@{
+    Layout = null;
+}
+
+<!-- Bracket CSS -->
+<link rel="stylesheet" href="~/Samples/css/bracket.css">
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="br-mainpanel">
+        <div class="br-pagetitle">
+            <div class="br-pagebody">
+                <div class="br-section-wrapper">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="dropdown-menu bg-white pd-20 pd-xs-40 wd-xs-350 pos-static ft-none shadow-base show">
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold">Sign In</h6>
+
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div><!-- form-group -->
+
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password"  } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div><!-- form-group -->
+
+                        <button class="btn btn-purple btn-block pd-y-10 mg-b-30">Sign In</button>
+
+
+                    </div>
+                    <div class="form-group" style="color:orangered">
+                        @ViewBag.error
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

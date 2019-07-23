@@ -56,7 +56,8 @@
                                     @Html.DisplayFor(modelItem => item.LastName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.About)
+                                    @*@Html.DisplayFor(modelItem => item.About)*@
+                                    @Html.Raw(HttpUtility.HtmlDecode(@item.About))
                                 </td>
                                 <td>
                                     <img src="@Url.Content(item.ImageUrl)" height="100" />

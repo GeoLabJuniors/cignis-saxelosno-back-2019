@@ -1340,6 +1340,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Home\Catalogue.cshtml" />
     <Content Include="Views\Home\AuthorPage.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1353,7 +1354,6 @@
     <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Samples\lib\codemirror\mode\rpm\changes\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LittleBooks.BLL\LittleBooks.BLL.csproj">

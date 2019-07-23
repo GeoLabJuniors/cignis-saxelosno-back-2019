@@ -62,7 +62,7 @@
         <section class="about">
             <h1>პროექტის შესახებ</h1>
             <div class="text-area">
-                @Html.DisplayFor(model => model.Text)
+                @Html.Raw(HttpUtility.HtmlDecode(Model.Text))
             </div>
         </section>
         <div class="gallery z-index-1">

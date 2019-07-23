@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using LittleBooks.BLL.Services;
+using LittleBooks.Common.Models;
 
 namespace LittleBooks.Controllers
 {
@@ -18,13 +19,33 @@ namespace LittleBooks.Controllers
         }
         // GET: Account
         
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel user)
+        {
+            if (accountService.GetLogin(user)==false)
+            {
+                ViewBag.error = "not allowed";
+                return View();
+            }
+
+            else
+            {
+
+                Session["LogedUser"] = user;
+                return RedirectToAction("Index", "Admin");
+            }
+        }
+
+
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            return RedirectToAction("Index","Home");
         }
 
 

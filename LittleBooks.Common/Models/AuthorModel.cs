@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
 namespace LittleBooks.Common.Models
 {
@@ -27,6 +28,7 @@ namespace LittleBooks.Common.Models
         [Required(ErrorMessage = "ატვირთეთ სურათი")]
         public HttpPostedFileBase ImageFile { get; set; }
 
+        [AllowHtml]
         [DisplayName("ბიოგრაფია")]
         [Required(ErrorMessage = "შეიყვანეთ ბიოგრაფია")]
         public string About { get; set; }

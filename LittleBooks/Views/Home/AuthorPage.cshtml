@@ -68,7 +68,7 @@
             <h1>@Model.FirstName  @Model.LastName</h1>
             <div class="bio">
                 <p>
-                    @Model.About
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.About))
                 </p>
             </div>
         </article>
