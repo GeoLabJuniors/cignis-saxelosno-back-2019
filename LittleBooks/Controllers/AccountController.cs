@@ -36,7 +36,7 @@ namespace LittleBooks.Controllers
 
             else
             {
-                Session["LogedUser"] = user;
+                Session["LoggedUser"] = user;
                 return RedirectToAction("Index", "Admin");
             }
         }

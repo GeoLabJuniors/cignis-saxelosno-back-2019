@@ -10,6 +10,7 @@ using LittleBooks.Common.Models;
 namespace LittleBooks.Controllers
 {
     //[LoginFilter]
+    [LoginFilter]
     public class AdminController : Controller
     {
         TaleService taleService;

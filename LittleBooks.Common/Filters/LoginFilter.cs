@@ -13,14 +13,32 @@ namespace LittleBooks.Common.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            LoginModel user = (LoginModel)filterContext.HttpContext.Session["LogedUser"];
+            LoginModel user = (LoginModel)filterContext.HttpContext.Session["LoggedUser"];
             if (user != null)
             {
-                filterContext.Result = new RedirectToRouteResult(
-                    new RouteValueDictionary
-                    {{ "Controller", "Admin"},
-                        { "Action" , "Index"}
-                    });
+                var controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+                if ( controllerName != "Admin")
+                {
+                    filterContext.Result = new RedirectToRouteResult(
+                                       new RouteValueDictionary
+                                       {{ "Controller", "Admin"},
+                                        { "Action" , "Index"}
+                                       });
+                }
+
+            }
+            else
+            {
+                var actionName = filterContext.ActionDescriptor.ActionName;
+                var controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+                if (!(actionName == "Login" && controllerName == "Account"))
+                {
+                    filterContext.Result = new RedirectToRouteResult(
+                        new RouteValueDictionary
+                        {{ "Controller", "Account"},
+                        { "Action" , "Login"}
+                        });
+                }
             }
 
             base.OnActionExecuting(filterContext);
