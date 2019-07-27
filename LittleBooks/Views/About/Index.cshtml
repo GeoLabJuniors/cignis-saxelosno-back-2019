@@ -1,63 +1,61 @@
 ﻿@model LittleBooks.Common.Models.AboutProjectModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 @{
     ViewBag.Title = "about";
 }
 
-<!DOCTYPE html>
 
 <html>
-<head>
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <title>წიგნის სახელოსნო</title>
-    <meta name="description" content="პატარაობაში ადამიანები ოცნებობენ, ფიქრობენ, ესიზმრებათ უცნაური სიზრმები და ათასგვარ რამეს იგონებენ. მერე იზრდებიან და ყველაფერი სადღაც იკარგება. თითქოს ეს ყველაფერი არც ყოფილა. ამ ვებგვერდზე შეგიძლია ნახოთ წიგნები რომლებიც პატარა ბავშვებმა თავიანთი თანატოლებისა და უფროსებისათვის დაწერეს.">
-    <meta name="keywords" content="წიგნის სახელოსნო">
-    <meta name='author' content='Anano Aspanidze (მელა) - anano.aspanidze@geolab.edu.ge'>
-    <link rel="icon" href="~/Style/images/logo.ico">
-    
-    <!-- fb og tags  -->
-    <meta property="og:title" content="წიგნის სახელოსნო" />
-    <meta property="og:description" content="პატარაობაში ადამიანები ოცნებობენ, ფიქრობენ, ესიზმრებათ უცნაური სიზრმები და ათასგვარ რამეს იგონებენ. მერე იზრდებიან და ყველაფერი სადღაც იკარგება. თითქოს ეს ყველაფერი არც ყოფილა. ამ ვებგვერდზე შეგიძლია ნახოთ წიგნები რომლებიც პატარა ბავშვებმა თავიანთი თანატოლებისა და უფროსებისათვის დაწერეს." />
-    <!-- <meta property="fb:app_id" content="" />-->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://littlebooks.geolab.edu.ge/" />
-    <meta property="og:image" content="http://littlebooks.geolab.edu.ge/images/logo-bigger.png" />
+@*<head>
+        <meta charset="UTF-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <title>წიგნის სახელოსნო</title>
+        <meta name="description" content="პატარაობაში ადამიანები ოცნებობენ, ფიქრობენ, ესიზმრებათ უცნაური სიზრმები და ათასგვარ რამეს იგონებენ. მერე იზრდებიან და ყველაფერი სადღაც იკარგება. თითქოს ეს ყველაფერი არც ყოფილა. ამ ვებგვერდზე შეგიძლია ნახოთ წიგნები რომლებიც პატარა ბავშვებმა თავიანთი თანატოლებისა და უფროსებისათვის დაწერეს.">
+        <meta name="keywords" content="წიგნის სახელოსნო">
+        <meta name='author' content='Anano Aspanidze (მელა) - anano.aspanidze@geolab.edu.ge'>
+        <link rel="icon" href="~/Style/images/logo.ico">
 
-    <link rel="stylesheet" href="~/Style/css/reset.min.css">
-    <link rel="stylesheet" href="~/Style/css/fonts.css">
+        <!-- fb og tags  -->
+        <meta property="og:title" content="წიგნის სახელოსნო" />
+        <meta property="og:description" content="პატარაობაში ადამიანები ოცნებობენ, ფიქრობენ, ესიზმრებათ უცნაური სიზრმები და ათასგვარ რამეს იგონებენ. მერე იზრდებიან და ყველაფერი სადღაც იკარგება. თითქოს ეს ყველაფერი არც ყოფილა. ამ ვებგვერდზე შეგიძლია ნახოთ წიგნები რომლებიც პატარა ბავშვებმა თავიანთი თანატოლებისა და უფროსებისათვის დაწერეს." />
+        <!-- <meta property="fb:app_id" content="" />-->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://littlebooks.geolab.edu.ge/" />
+        <meta property="og:image" content="http://littlebooks.geolab.edu.ge/images/logo-bigger.png" />
 
-    <link rel="stylesheet" type="text/css" href="~/Style/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="~/Style/slick/slick-theme.css" />
-    <link rel="stylesheet" href="~/Style/css/main.css">
-</head>
+        <link rel="stylesheet" href="~/Style/css/reset.min.css">
+        <link rel="stylesheet" href="~/Style/css/fonts.css">
+
+        <link rel="stylesheet" type="text/css" href="~/Style/slick/slick.css" />
+        <link rel="stylesheet" type="text/css" href="~/Style/slick/slick-theme.css" />
+        <link rel="stylesheet" href="~/Style/css/main.css">
+    </head>*@
 <body>
 
     <!-- header, menu -->
-
     <header class="mela-section relative">
-        <img id="menu-shape-1" src="~/Style/images/menu-shape-1.png" alt="menu-shape-1">
-        <img id="menu-shape-2" src="~/Style/images/menu-shape-2.png" alt="menu-shape-2">
-        <img id="menu-shape-3-sc" src="~/Style/images/layer-63.png" alt="menu-shape-3">
-        <div id="menu-shape-4">
-            <img src="~/Style/images/layer-29.png" alt="menu-shape-4">
-        </div>
-        <!-- <img id="tsriala-1" data-gifffer="images/tsriala-1.gif" /> -->
+            <img id="menu-shape-1" src="~/Style/images/menu-shape-1.png" alt="menu-shape-1">
+            <img id="menu-shape-2" src="~/Style/images/menu-shape-2.png" alt="menu-shape-2">
+            <img id="menu-shape-3-sc" src="~/Style/images/layer-63.png" alt="menu-shape-3">
+            <div id="menu-shape-4">
+                <img src="~/Style/images/layer-29.png" alt="menu-shape-4">
+            </div>
+            <!-- <img id="tsriala-1" data-gifffer="images/tsriala-1.gif" /> -->
 
-        <div class="flex menu-wrapper flex-align-center">
-            <a href="~/Home/Index"><img id="logo" src="../Style/images/logo.svg" alt="წიგნის სახელოსნო"></a>
-            <nav class="sandro-font-regular">
-                <ul class="flex">
-                    <li><a href="~/About/Index">პროექტის შესახებ</a></li>
-                    <li><a href="~/Contact/Index">კონტაქტი</a></li>
-                    <li><a href="~/Home/Catalogue">წიგნები</a></li>
-                    <li class="relative"><img id="search-icon" class="vertical-middle photo" src="~/Style/images/search-icon.svg" alt="search-icon"> <input type="text" placeholder="საპოვნელა" class="search"></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+            <div class="flex menu-wrapper flex-align-center">
+                <a href="~/Home/Index"><img id="logo" src="../Style/images/logo.svg" alt="წიგნის სახელოსნო"></a>
+                <nav class="sandro-font-regular">
+                    <ul class="flex">
+                        <li><a href="~/About/Index">პროექტის შესახებ</a></li>
+                        <li><a href="~/Contact/Index">კონტაქტი</a></li>
+                        <li><a href="~/Home/Catalogue">წიგნები</a></li>
+                        <li class="relative"><img id="search-icon" class="vertical-middle photo" src="~/Style/images/search-icon.svg" alt="search-icon"> <input type="text" id="search-input" placeholder="საპოვნელა" class="search"></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
     <main>
         <section class="about">
             <h1>პროექტის შესახებ</h1>
@@ -85,17 +83,16 @@
         </div>
     </main>
     <!-- footer -->
-
     <footer class="sandro-font-regular flex mela-section flex-align-center">
-        <img src="~/Style/images/footer-shape-1.png" alt="footer-shape" class="footer-shape-1">
-        <img src="~/Style/images/footer-shape-2.png" alt="footer-shape" class="footer-shape-2">
-        <div class="">
-            <img src="~/Style/images/geolab-logo.png" alt="ჯეოლაბი" id="geolab-logo">
-            <img src="~/Style/images/multi-biblioteka-logo.png" alt="თბილისის მულტიფუნქციური ბიბლიოთეკების გაერთიანება" id="biblio-logo">
-        </div>
-        <p>© პროდუქტი შექმნილია კომპანია "ჯეოლაბის" მიერ</p>
-        <p>გვეკონტაქტე: 032 566 77 898</p>
-    </footer>
+            <img src="~/Style/images/footer-shape-1.png" alt="footer-shape" class="footer-shape-1">
+            <img src="~/Style/images/footer-shape-2.png" alt="footer-shape" class="footer-shape-2">
+            <div class="">
+                <img src="~/Style/images/geolab-logo.png" alt="ჯეოლაბი" id="geolab-logo">
+                <img src="~/Style/images/multi-biblioteka-logo.png" alt="თბილისის მულტიფუნქციური ბიბლიოთეკების გაერთიანება" id="biblio-logo">
+            </div>
+            <p>© პროდუქტი შექმნილია კომპანია "ჯეოლაბის" მიერ</p>
+            <p>გვეკონტაქტე: 032 566 77 898</p>
+        </footer>
 
 
 

@@ -1206,6 +1206,7 @@
     <Content Include="Style\images\books\ნინო-ჯორბენაძე.png" />
     <Content Include="Style\images\books\ქეთევან-ჩიკვილაძე.png" />
     <Content Include="Style\images\books\ხატია-ხუბუტია.png" />
+    <Content Include="Style\images\didi.png" />
     <Content Include="Style\images\email.png" />
     <Content Include="Style\images\facebook.png" />
     <Content Include="Style\images\fonidaruka.png" />
@@ -1215,6 +1216,7 @@
     <Content Include="Style\images\footer-shape-3.png" />
     <Content Include="Style\images\geolab-logo.png" />
     <Content Include="Style\images\Layer 29.png" />
+    <Content Include="Style\images\Layer-10.png" />
     <Content Include="Style\images\Layer-29.png" />
     <Content Include="Style\images\Layer-3.png" />
     <Content Include="Style\images\Layer-35.png" />
@@ -1238,8 +1240,12 @@
     <Content Include="Style\images\menu-shape-2.png" />
     <Content Include="Style\images\menu-shape-3.png" />
     <Content Include="Style\images\multi-biblioteka-logo.png" />
+    <Content Include="Style\images\next.png" />
+    <Content Include="Style\images\patara.png" />
     <Content Include="Style\images\phone.png" />
+    <Content Include="Style\images\qveda.png" />
     <Content Include="Style\images\search-icon.svg" />
+    <Content Include="Style\images\shua.png" />
     <Content Include="Style\images\tsriala-1.gif" />
     <Content Include="Style\images\tsriala-1.svg" />
     <Content Include="Style\images\tsriala-2.gif" />
@@ -1301,6 +1307,12 @@
     <Content Include="Views\Admin\EditContact.cshtml" />
     <Content Include="Views\Admin\GetAllContact.cshtml" />
     <Content Include="Views\Admin\GetAboutProject.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Home\Catalogue.cshtml" />
+    <Content Include="Views\Home\AuthorPage.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Style\fonts\SandroUniversal-BoldItalic\SandroUniversal-BoldItalic.eot" />
     <Content Include="Style\fonts\SandroUniversal-BoldItalic\SandroUniversal-BoldItalic.otf" />
     <Content Include="Style\fonts\SandroUniversal-BoldItalic\SandroUniversal-BoldItalic.ttf" />
@@ -1335,12 +1347,7 @@
     <Content Include="Style\slick\slick-theme.scss" />
     <Content Include="Style\slick\slick.less" />
     <Content Include="Style\slick\slick.scss" />
-    <Content Include="Views\About\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Home\Catalogue.cshtml" />
-    <Content Include="Views\Home\AuthorPage.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
