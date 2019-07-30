@@ -14,13 +14,16 @@ namespace LittleBooks.BLL.Services
 
         public AccountService()
         {
-           db = new LittleBooksEntities();
+            db = new LittleBooksEntities();
         }
-        
+
         public List<LoginModel> GetLogins()
         {
             List<LoginModel> data = db.LoginUsers.Select(x => new LoginModel
             {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
                 Email = x.Email,
                 Password = x.Password
             }).ToList();
@@ -29,21 +32,25 @@ namespace LittleBooks.BLL.Services
 
         }
 
-        public bool GetLogin(LoginModel loginModel)
+        public LoginModel GetLoginUser(LoginModel loginModel)
         {
-            LoginUser user = db.LoginUsers.FirstOrDefault(x => x.Email == loginModel.Email && x.Password == loginModel.Password);
+            var data = db.LoginUsers.FirstOrDefault(x => x.Email == loginModel.Email && x.Password == loginModel.Password);
 
-            if (user == null)
+            if (data != null)
             {
-                return false;
+                LoginModel user = new LoginModel
+                {
+                    Id = data.Id,
+                    FirstName = data.FirstName,
+                    LastName = data.LastName,
+                    Email = data.Email,
+                    Password = data.Password
+                };
+                return user;
             }
 
-            else
-            {
-               
-                return true;
-            }
-            
+
+            return null;
         }
     }
 }

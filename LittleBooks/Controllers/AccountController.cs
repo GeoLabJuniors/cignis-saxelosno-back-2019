@@ -28,7 +28,7 @@ namespace LittleBooks.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel user)
         {
-            if (accountService.GetLogin(user)==false)
+            if (accountService.GetLoginUser(user)==null)
             {
                 ViewBag.error = "not allowed";
                 return View();
@@ -36,7 +36,7 @@ namespace LittleBooks.Controllers
 
             else
             {
-                Session["LoggedUser"] = user;
+                Session["LoggedUser"] = accountService.GetLoginUser(user);  
                 return RedirectToAction("Index", "Admin");
             }
         }

@@ -1,5 +1,9 @@
 ﻿<!DOCTYPE html>
+@using LittleBooks.Common.Models;
 <html lang="en">
+@{
+    var user = (LoginModel)Session["LoggedUser"];
+}
 <head>
     <title>@ViewBag.Title - Little Books</title>
     @*<meta charset="utf-8" />
@@ -10,7 +14,7 @@
         <link href="~/Style/Admin.css" rel="stylesheet" />
         <script src="~/Themes/ckeditor_full/../ckeditor/ckeditor.js"></script>*@
 
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -92,17 +96,17 @@
 
                 <div class="dropdown">
                     <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                        <span class="logged-name hidden-md-down">ადმინი სახელი გვარი</span>
+                        <span class="logged-name hidden-md-down">ადმინი</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-header wd-250">
                         <div class="tx-center">
-                            <h6 class="logged-fullname">Katherine P. Lumaad</h6>
+                            <h6 class="logged-fullname">@user.FirstName @user.LastName</h6>
                         </div>
                         <hr>
 
                         <hr>
                         <ul class="list-unstyled user-profile-nav">
-                            <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
+                            <li><a href="~/Account/LogOut"><i class="icon ion-power"></i> Sign Out</a></li>
                         </ul>
                     </div><!-- dropdown-menu -->
                 </div><!-- dropdown -->
@@ -145,7 +149,7 @@
         @RenderBody()
         <hr />
     </div>
-   
+
 
 </body>
 </html>

@@ -10,6 +10,11 @@ namespace LittleBooks.Common.Models
 {
     public class LoginModel
     {
+
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
         [DisplayName("ელ.ფოსტა")]
         [DataType(DataType.EmailAddress, ErrorMessage = "შემოიტანეთ სწორი ელ.ფოსტა")]
         [Required(ErrorMessage = "შეიყვანეთ ელ.ფოსტა")]
