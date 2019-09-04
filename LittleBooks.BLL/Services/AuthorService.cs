@@ -8,28 +8,33 @@ using System.Web;
 using System.Web.Mvc;
 using LittleBooks.Common.Models;
 using LittleBooks.DAL.Data;
+using LittleBooks.DAL.Interfaces;
+using LittleBooks.DAL.Repositories;
+using LittleBooks.DAL.UnitOfWork;
 
 namespace LittleBooks.BLL.Services
 {
     public class AuthorService
     {
-        LittleBooksEntities db;
+        IUnitOfWork Uow;
 
         public AuthorService()
         {
-            db = new LittleBooksEntities();
+            this.Uow = new UnitOfWork(new LittleBooksEntities());
+            
+
         }
-        
+
 
         public List<AuthorModel> GetAllAuthor()
         {
-            List<AuthorModel> data = db.Authors.Where(d => d.DeleteDate == null).Select(x => new AuthorModel
+            List<AuthorModel> data = Uow.Authors.GetAll().Where(d => d.DeleteDate == null).Select(x => new AuthorModel
             {
                 Id = x.Id,
                 FirstName = x.FirstName,
                 LastName = x.LastName,
-                About=x.About,
-                ImageUrl=x.ImageUrl
+                About = x.About,
+                ImageUrl = x.ImageUrl
 
             }).ToList();
 
@@ -39,13 +44,13 @@ namespace LittleBooks.BLL.Services
 
         public AuthorModel GetAuthor(int id)
         {
-            var data = db.Authors.FirstOrDefault(x => x.Id == id);
+            var data = Uow.Authors.Get(id);
             AuthorModel model = new AuthorModel
             {
                 Id = data.Id,
                 FirstName = data.FirstName,
                 LastName = data.LastName,
-                Tales = data.Tales.Where(d=>d.DeleteDate==null).Select(t => new TaleModel
+                Tales = data.Tales.Where(d => d.DeleteDate == null).Select(t => new TaleModel
                 {
                     Title = t.Title,
                     TaleLink = t.TaleLink,
@@ -63,12 +68,12 @@ namespace LittleBooks.BLL.Services
 
         public void EditAuthor(AuthorModel author)
         {
-            var data = db.Authors.FirstOrDefault(x => x.Id == author.Id);
+            var data = Uow.Authors.Get(author.Id);
 
             data.FirstName = author.FirstName;
             data.LastName = author.LastName;
             data.About = author.About;
-            
+
 
             if (author.ImageFile != null)
             {
@@ -78,7 +83,7 @@ namespace LittleBooks.BLL.Services
                 data.ImageUrl = imagePath;
             }
 
-            db.SaveChanges();
+            Uow.Save();
 
         }
 
@@ -88,31 +93,33 @@ namespace LittleBooks.BLL.Services
 
             Author addAuthor = new Author
             {
-                FirstName=authorModel.FirstName,
-                LastName=authorModel.LastName,
-                About=authorModel.About,
-                ImageUrl=imagePath,
-                
+                FirstName = authorModel.FirstName,
+                LastName = authorModel.LastName,
+                About = authorModel.About,
+                ImageUrl = imagePath,
+
             };
 
-            db.Authors.Add(addAuthor);
-            db.SaveChanges();
+            Uow.Authors.Add(addAuthor);
+            Uow.Save();
 
         }
 
         public void DeleteAuthor(int id)
         {
-            var author = db.Authors.FirstOrDefault(x => x.Id == id);
+            var author = Uow.Authors.Get(id);
             author.DeleteDate = DateTime.Now;
 
-            var tales = db.Tales.Where(x => x.AuthorId == id);
+            var tales = Uow.Tales.GetAll().Where(x => x.AuthorId == id);
 
-            foreach (var tale  in tales)
+            foreach (var tale in tales)
             {
                 tale.AuthorId = null;
             }
 
-            db.SaveChanges();
+            Uow.Save();
+            
+
         }
 
         private string SaveImageAndGetUrl(HttpPostedFileBase ImageFile)

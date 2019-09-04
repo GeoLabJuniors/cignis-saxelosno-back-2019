@@ -1,0 +1,17 @@
+﻿th, td {
+    white-space: normal !important;
+}
+
+.br-pagebody {
+    padding: 0;
+}
+
+.body-content {
+    margin-left: 230px;
+}
+
+
+.br-mainpanel {
+    width: 100%;
+    margin-left: 0;
+}

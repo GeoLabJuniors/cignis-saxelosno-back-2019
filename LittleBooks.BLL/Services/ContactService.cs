@@ -5,29 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using LittleBooks.Common.Models;
 using LittleBooks.DAL.Data;
+using LittleBooks.DAL.Interfaces;
+using LittleBooks.DAL.Repositories;
+using LittleBooks.DAL.UnitOfWork;
 
 namespace LittleBooks.BLL.Services
 {
     public class ContactService
     {
-        LittleBooksEntities db;
+        IUnitOfWork Uow;
+
         public ContactService()
         {
-            db = new LittleBooksEntities();
+            this.Uow = new UnitOfWork(new LittleBooksEntities());
         }
 
         public List<ContactModel> GetAll()
         {
-            List<ContactModel> data = db.Contacts.Select(x => new ContactModel
+            List<ContactModel> data = Uow.Contacts.GetAll().Select(x => new ContactModel
             {
-                Id=x.Id,
-                ContactType= new ContactTypeModel
+                Id = x.Id,
+                ContactType = new ContactTypeModel
                 {
                     Id = x.ContactType.Id,
                     Code = x.ContactType.Code,
                     Name = x.ContactType.Name
                 },
-                Value=x.Value
+                Value = x.Value
             }).ToList();
 
             return data;
@@ -35,18 +39,18 @@ namespace LittleBooks.BLL.Services
 
         public ContactModel Get(int id)
         {
-            var data = db.Contacts.FirstOrDefault(x=>x.Id == id);
+            var data = Uow.Contacts.Get(id);
 
             ContactModel model = new ContactModel
             {
                 Id = data.Id,
-                ContactType= new ContactTypeModel
+                ContactType = new ContactTypeModel
                 {
-                    Id=data.ContactType.Id,
-                    Code=data.ContactType.Code,
-                    Name=data.ContactType.Name
+                    Id = data.ContactType.Id,
+                    Code = data.ContactType.Code,
+                    Name = data.ContactType.Name
                 },
-                Value=data.Value
+                Value = data.Value
             };
 
             return model;
@@ -56,13 +60,13 @@ namespace LittleBooks.BLL.Services
 
         public void Edit(ContactModel contactModel)
         {
-            var data = db.Contacts.FirstOrDefault(x=>x.Id==contactModel.Id);
+            var data = Uow.Contacts.Get(contactModel.Id);
 
             data.Value = contactModel.Value;
 
-            db.SaveChanges();
+            Uow.Save();
         }
-            
+
 
     }
 }

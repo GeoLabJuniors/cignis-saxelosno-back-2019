@@ -5,21 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using LittleBooks.Common.Models;
 using LittleBooks.DAL.Data;
+using LittleBooks.DAL.Interfaces;
+using LittleBooks.DAL.Repositories;
+using LittleBooks.DAL.UnitOfWork;
 
 namespace LittleBooks.BLL.Services
 {
     public class AboutService
     {
-        LittleBooksEntities db;
+        IUnitOfWork Uow;
 
         public AboutService()
         {
-            db = new LittleBooksEntities();
+            this.Uow = new UnitOfWork(new LittleBooksEntities());
         }
+        
 
         public AboutProjectModel GetAboutProject()
         {
-            var data = db.AboutProjects.FirstOrDefault();
+            var data = Uow.AboutProject.GetAll().FirstOrDefault();
 
             AboutProjectModel model = new AboutProjectModel
             {
@@ -32,7 +36,7 @@ namespace LittleBooks.BLL.Services
 
         public AboutProjectModel GetAboutProject(int id)
         {
-            var data = db.AboutProjects.FirstOrDefault(x => x.Id == id);
+            var data = Uow.AboutProject.Get(id);
 
             AboutProjectModel model = new AboutProjectModel
             {
@@ -45,10 +49,10 @@ namespace LittleBooks.BLL.Services
 
         public void Edit(AboutProjectModel about)
         {
-            var data = db.AboutProjects.FirstOrDefault(x => x.Id==about.Id);
+            var data = Uow.AboutProject.Get(about.Id) ;
             data.Text = about.Text;
 
-            db.SaveChanges();
+            Uow.Save();
 
         }
     }

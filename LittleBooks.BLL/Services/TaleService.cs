@@ -8,27 +8,30 @@ using System.Web;
 using System.Web.Mvc;
 using LittleBooks.Common.Models;
 using LittleBooks.DAL.Data;
+using LittleBooks.DAL.Interfaces;
+using LittleBooks.DAL.Repositories;
+using LittleBooks.DAL.UnitOfWork;
 
 namespace LittleBooks.BLL.Services
 {
     public class TaleService
     {
-
-        LittleBooksEntities db;
+        IUnitOfWork Uow;
 
         public TaleService()
         {
-            db = new LittleBooksEntities();
+            this.Uow = new UnitOfWork(new LittleBooksEntities());
         }
         public List<TaleModel> GetAllTales()
         {
-            List<TaleModel> data = db.Tales.Where(d => d.DeleteDate == null).Select(x => new TaleModel
+            List<TaleModel> data = Uow.Tales.GetAll().Where(d => d.DeleteDate == null).Select(x => new TaleModel
             {
                 Id = x.Id,
                 Title = x.Title,
                 TaleLink = x.TaleLink,
-                Author = new AuthorModel
+                Author = x.Author == null ? null : new AuthorModel
                 {
+                    Id = x.Id,
                     FirstName = x.Author.FirstName,
                     LastName = x.Author.LastName
                 },
@@ -41,8 +44,8 @@ namespace LittleBooks.BLL.Services
 
         public TaleViewModel GetTale(int id)
         {
-            var tale = db.Tales.FirstOrDefault(x => x.Id == id);
-            var authorsList = db.Authors.Where(x => x.DeleteDate == null).Select(x => new SelectListItem
+            var tale = Uow.Tales.Get(id);
+            var authorsList = Uow.Authors.GetAll().Where(x => x.DeleteDate == null).Select(x => new SelectListItem
             {
                 Text = x.FirstName + " " + x.LastName,
                 Value = x.Id.ToString()
@@ -69,7 +72,7 @@ namespace LittleBooks.BLL.Services
 
         public TaleViewModel FillAddTaleModel(TaleViewModel model)
         {
-            var authorsList = db.Authors.Where(x => x.DeleteDate == null).Select(x => new SelectListItem
+            var authorsList = Uow.Authors.GetAll().Where(x => x.DeleteDate == null).Select(x => new SelectListItem
             {
                 Text = x.FirstName + " " + x.LastName,
                 Value = x.Id.ToString()
@@ -94,14 +97,14 @@ namespace LittleBooks.BLL.Services
                 CreateDate = DateTime.Now
             };
 
-            db.Tales.Add(addTale);
-            db.SaveChanges();
+            Uow.Tales.Add(addTale);
+            Uow.Save();
 
         }
 
         public void EditTale(TaleViewModel tale)
         {
-            var data = db.Tales.FirstOrDefault(x => x.Id == tale.Id);
+            var data = Uow.Tales.Get(tale.Id);
 
             data.Title = tale.Title;
             data.TaleLink = tale.TaleLink;
@@ -116,21 +119,21 @@ namespace LittleBooks.BLL.Services
             }
 
 
-            db.SaveChanges();
+            Uow.Save();
         }
 
         public void DeleteTale(int id)
         {
-            var data = db.Tales.FirstOrDefault(x => x.Id == id);
+            var data = Uow.Tales.Get(id);
             data.DeleteDate = DateTime.Now;
 
-            db.SaveChanges();
+            Uow.Save();
         }
 
 
         public List<TaleModel> GetRandom3Tales()
         {
-            List<TaleModel> data = db.Tales.Where(d => d.DeleteDate == null).Select(x => new TaleModel
+            List<TaleModel> data = Uow.Tales.GetAll().Where(d => d.DeleteDate == null).Select(x => new TaleModel
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -166,32 +169,50 @@ namespace LittleBooks.BLL.Services
 
             return data;
         }
-        public List<TaleModel> GetAndSearchTales(string search)
+        public List<TaleModel> GetSortAndSearchTales(bool title, bool author, string search)
         {
-            var data = db.Tales.Where
+
+            List<TaleModel> tales;
+
+            var data = Uow.Tales.GetAll().Where
                    (
                    x => x.Title.Contains(search) ||
                    x.Author.FirstName.Contains(search) ||
-                   x.Author.LastName.Contains(search) 
+                   x.Author.LastName.Contains(search)
                    );
             var model = data.Where(d => d.DeleteDate == null).Select(x => new TaleModel
             {
                 Id = x.Id,
                 Title = x.Title,
-                TaleLink=x.TaleLink,
-                Author = new AuthorModel
+                TaleLink = x.TaleLink,
+                Author = x.Author == null ? null : new AuthorModel
                 {
-                    Id = x.Author.Id,
+                    Id = x.Id,
                     FirstName = x.Author.FirstName,
                     LastName = x.Author.LastName
                 },
                 ImageUrl = x.ImageUrl,
                 CreateDate = x.CreateDate
-            }).ToList();
+            });
 
-            return model;
+            if (title == true && author == false)
+            {
+                tales = model.OrderBy(o => o.Title).ToList();
+            }
+
+            else if (title == false && author == true)
+            {
+                tales = model.OrderBy(o => o.Author.LastName).ToList();
+            }
+            else
+            {
+                tales = model.ToList();
+            }
+
+            return tales;
+
         }
-    
+
 
         private string SaveImageAndGetUrl(HttpPostedFileBase ImageFile)
         {

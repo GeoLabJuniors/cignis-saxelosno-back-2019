@@ -5,21 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using LittleBooks.Common.Models;
 using LittleBooks.DAL.Data;
+using LittleBooks.DAL.Interfaces;
+using LittleBooks.DAL.Repositories;
+using LittleBooks.DAL.UnitOfWork;
 
 namespace LittleBooks.BLL.Services
 {
     public class AccountService
     {
-        LittleBooksEntities db;
+        IUnitOfWork Uow;
 
         public AccountService()
         {
-            db = new LittleBooksEntities();
+            this.Uow = new UnitOfWork(new LittleBooksEntities());
+           
         }
 
         public List<LoginModel> GetLogins()
         {
-            List<LoginModel> data = db.LoginUsers.Select(x => new LoginModel
+            List<LoginModel> data = Uow.LoginUsers.GetAll().Select(x => new LoginModel
             {
                 Id = x.Id,
                 FirstName = x.FirstName,
@@ -34,7 +38,7 @@ namespace LittleBooks.BLL.Services
 
         public LoginModel GetLoginUser(LoginModel loginModel)
         {
-            var data = db.LoginUsers.FirstOrDefault(x => x.Email == loginModel.Email && x.Password == loginModel.Password);
+            var data = Uow.LoginUsers.FindUser(loginModel.Email, loginModel.Password);
 
             if (data != null)
             {
