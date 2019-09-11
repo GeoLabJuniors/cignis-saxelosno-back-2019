@@ -65,11 +65,18 @@
 
 
                                 <td>
-                                    @*<h6 class="mg-l-10 bd bd-1 bd-info">*@
-                                    @Html.ActionLink(AdminResources.edit, "EditAuthor", new { id = item.Id }) ||
+                              
+                                    @*@Html.ActionLink(AdminResources.edit, "EditAuthor", new { id = item.Id }) ||
 
-                                    @Html.ActionLink(AdminResources.delete, "DeleteAuthor", new { id = item.Id })
-                                    @*</h6>*@
+                                    @Html.ActionLink(AdminResources.delete, "DeleteAuthor", new { id = item.Id })*@
+                             
+                                    <a href='@Url.Action("EditAuthor", "Admin",new { id = item.Id })'>
+                                        <img src="~/Samples/img/box_edit-512.png" height="20" />
+                                    </a>
+                                    ||
+                                    <a href='@Url.Action("DeleteAuthor", "Admin",new { id = item.Id })'>
+                                        <img src="~/Samples/img/Apple-64-512.png" height="20" />
+                                    </a>
                                 </td>
 
                             </tr>

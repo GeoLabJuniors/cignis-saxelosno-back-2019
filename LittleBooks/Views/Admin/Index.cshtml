@@ -58,11 +58,11 @@
                                 <td>
                                     <a href="@Html.DisplayFor(modelItem => item.TaleLink)">@Html.DisplayFor(modelItem => item.TaleLink)</a>
                                 </td>
-                                <th>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.Author.FirstName)
 
                                     @Html.DisplayFor(modelItem => item.Author.LastName)
-                                </th>
+                                </td>
                                 <td>
                                     <img src="@Url.Content(item.ImageUrl)" height="100" />
                                 </td>
@@ -72,10 +72,16 @@
 
 
                                 <td>
-                                    
-                                    @Html.ActionLink(AdminResources.edit, "EditTale", new { id = item.Id })
+
+                                    @*@Html.ActionLink(AdminResources.edit, "EditTale", new { id = item.Id })*@
+                                    <a href='@Url.Action("EditTale", "Admin",new { id = item.Id })'>
+                                        <img src="~/Samples/img/box_edit-512.png" height="20" />
+                                    </a>
                                     ||
-                                    @Html.ActionLink(AdminResources.delete, "DeleteTale", new { id = item.Id })
+                                    @*@Html.ActionLink(AdminResources.delete, "DeleteTale", new { id = item.Id })*@
+                                    <a href='@Url.Action("DeleteTale", "Admin",new { id = item.Id })'>
+                                        <img src="~/Samples/img/Apple-64-512.png" height="20" />
+                                    </a>
                                 </td>
 
                             </tr>

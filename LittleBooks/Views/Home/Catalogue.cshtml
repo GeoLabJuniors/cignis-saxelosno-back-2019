@@ -1,9 +1,14 @@
-﻿@model IEnumerable<LittleBooks.Common.Models.TaleModel>
+﻿@*@model IEnumerable<LittleBooks.Common.Models.TaleModel>*@
 
 @{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
-}
 
+}
+@{
+    var listCount = ViewData.Model["Count"];
+    var pageCount = ViewData.Model["PageQuantity"];
+    var siteData = ViewData.Model["List"];
+}
 @{
     ViewBag.Title = "Catalogue";
 }
@@ -59,7 +64,7 @@
         </div>
     </header>
 
- 
+
     <main>
         <section class="books-wrapper mela-section flex flex-column relative">
 
@@ -68,8 +73,8 @@
                     <img src="~/Style/images/Layer-10.png" alt="bg" class="filter-bg">
                     <h3 class="center-position filter-h3">ფილტრი</h3>
                     <div class="arrow-down center-position"><img src="~/Style/images/next.png" alt="down-arrow"></div>
-                    <h3 class="author center-position "><a class="text-hide" href="#">ავტორი</a></h3>
-                    <h3 class="genre center-position "><a class="text-hide" href="#">სათაური</a></h3>
+                    <h3 class="author center-position "><a class="text-hide" href="~/Home/Catalogue?byTitle=false&byAuthor=true">ავტორი</a></h3>
+                    <h3 class="genre center-position "><a class="text-hide" href="~/Home/Catalogue?byTitle=true&byAuthor=false">სათაური</a></h3>
                 </div>
                 <div>
                     <img src="~/Style/images/shua.png" alt="shua" class="shua hide">
@@ -78,68 +83,66 @@
             </section>
 
 
-            @for (int i = 0; i < Model.ToList().Count(); i++)
-            {
-                var item = Model.ToList()[i];
-
-                if (i % 2 == 0 && i != 0)
-                {
+           
+                @{
+                    if (siteData.Count>0)
+                    {
                     <div class="book flex flex-align-center book-1">
-                        <a href="@item.TaleLink" target="_blank" class="book-img-url">
-                            <img src="@Url.Content(item.ImageUrl)" alt="@item.Title" class="book-img">
+                        <a href="@siteData[0].TaleLink" target="_blank" class="book-img-url">
+                            <img src="@Url.Content(siteData[0].ImageUrl)" alt="@siteData[0].Title" class="book-img">
                         </a>
                         <div class="book-text sandro-font-regular">
                             <h3 class="book-author sandro-font-bold">
-                                <a href="@Url.Action("AuthorPage", new { id = item.Author.Id })">
-                                    @item.Author.FirstName
+                                <a href="@Url.Action("AuthorPage", new { id = siteData[0].Author.Id })">
+                                    @siteData[0].Author.FirstName
 
-                                    @item.Author.LastName
+                                    @siteData[0].Author.LastName
                                 </a>
                             </h3>
-                            <h4 class="book-title"><a href="@item.TaleLink" target="_blank">“@item.Title”</a></h4>
-                            <p class="book-date">@item.CreateDate</p>
+                            <h4 class="book-title"><a href="@siteData[0].TaleLink" target="_blank">“@siteData[0].Title”</a></h4>
+                            <p class="book-date">@siteData[0].CreateDate</p>
                         </div>
                         <img src="~/Style/images/book-1-back.png" alt="book-background" class="img-background">
                     </div>
                 }
 
-                else if (i % 3 == 0 && i == 0)
+             if (siteData.Count>1)
                 {
                     <div class="book flex flex-align-center book-2">
-                        <a href="@item.TaleLink" target="_blank" class="book-img-url">
-                            <img src="@Url.Content(item.ImageUrl)" alt="@item.Title" class="book-img">
+                        <a href="@siteData[1].TaleLink" target="_blank" class="book-img-url">
+                            <img src="@Url.Content(siteData[1].ImageUrl)" alt="@siteData[1].Title" class="book-img">
                         </a>
                         <div class="book-text sandro-font-regular">
                             <h3 class="book-author sandro-font-bold">
-                                <a href="@Url.Action("AuthorPage", new { id = item.Author.Id })">
-                                    @item.Author.FirstName
+                                <a href="@Url.Action("AuthorPage", new { id = siteData[1].Author.Id })">
+                                    @siteData[1].Author.FirstName
 
-                                    @item.Author.LastName
+                                    @siteData[1].Author.LastName
                                 </a>
                             </h3>
-                            <h4 class="book-title"><a href="@item.TaleLink" target="_blank">“@item.Title”</a></h4>
-                            <p class="book-date">@item.CreateDate</p>
+                            <h4 class="book-title"><a href="@siteData[1].TaleLink" target="_blank">“@siteData[1].Title”</a></h4>
+                            <p class="book-date">@siteData[1].CreateDate</p>
                         </div>
                         <img src="~/Style/images/book-2-back.png" alt="book-background" class="img-background">
                     </div>
                 }
 
-                else
+               if(siteData.Count>2)
                 {
                     <div class="book flex flex-align-center book-3">
-                        <a href="@item.TaleLink" target="_blank" class="book-img-url">
-                            <img src="@Url.Content(item.ImageUrl)" alt="@item.Title" class="book-img">
+                        <a href="@siteData[2].TaleLink" target="_blank" class="book-img-url">
+                            <img src="@Url.Content(siteData[2].ImageUrl)" alt="@siteData[2].Title" class="book-img">
                         </a>
                         <div class="book-text sandro-font-regular">
                             <h3 class="book-author sandro-font-bold">
-                                <a href="@Url.Action("AuthorPage", new { id = item.Author.Id })">
-                                    @item.Author.FirstName
+                                <a href="@Url.Action("AuthorPage", new { id = siteData[2].Author.Id })">
+                                    @siteData[2].Author.FirstName
 
-                                    @item.Author.LastName
+                                    @siteData[2].Author.LastName
                                 </a>
                             </h3>
-                            <h4 class="book-title"><a href="@item.TaleLink" target="_blank">“@item.Title”</a></h4>
-                            <p class="book-date">@item.CreateDate</p>
+                            <h4 class="book-title"><a href="@siteData[2].TaleLink" target="_blank">“@siteData[2].Title”</a></h4>
+                            <p class="book-date">@siteData[2].CreateDate</p>
                         </div>
                         <img src="~/Style/images/book-3-back.png" alt="book-background" class="img-background">
                     </div>
@@ -147,12 +150,22 @@
 
 
             }
+            @{
+                
 
+            }
 
             <section class="other-page">
                 <img src="~/Style/images/didi.png" alt="#" class="sw didi">
                 <img src="~/Style/images/patara.png" alt="#" class="sw patara">
-                <p class="num-switch"><a href="#">1</a><a href="#"> 2</a><a href="#"> 3</a></p>
+                <p class="num-switch">
+                    @for (int i = 1; i <= pageCount; i++)
+                    {
+                        <a href="~/Home/Catalogue?pageNum=@i">@i</a>
+                    }
+
+
+                </p>
 
             </section>
         </section>
@@ -181,7 +194,7 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="~/Style/js/gifffer.min.js"></script>
-    <script src="~/Style/js/script.js"></script>
+
 
 </body>
 

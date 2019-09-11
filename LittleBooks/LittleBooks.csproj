@@ -435,6 +435,8 @@
     <Content Include="obj\Debug\LittleBooks.dll" />
     <Content Include="obj\Debug\LittleBooks.pdb" />
     <Content Include="Samples\css\tables.css" />
+    <Content Include="Samples\img\Apple-64-512.png" />
+    <Content Include="Samples\img\box_edit-512.png" />
     <Content Include="Samples\img\img11.jpg" />
     <Content Include="Samples\img\img12.jpg" />
     <Content Include="Samples\img\img13.jpg" />

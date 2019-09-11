@@ -16,6 +16,7 @@ namespace LittleBooks.DAL.Data
     {
         public int Id { get; set; }
         public int ContactTypeId { get; set; }
+        public string IconUrl { get; set; }
         public string Value { get; set; }
     
         public virtual ContactType ContactType { get; set; }

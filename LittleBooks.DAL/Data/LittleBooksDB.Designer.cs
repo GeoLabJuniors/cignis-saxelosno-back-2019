@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\TeTe\source\repos\LittleBooks\LittleBooks.DAL\Data\LittleBooksDB.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\cignis-saxelosno-back-2019\LittleBooks.DAL\Data\LittleBooksDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

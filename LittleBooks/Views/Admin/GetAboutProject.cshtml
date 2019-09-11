@@ -26,7 +26,13 @@
             </dl>
             <hr />
             <p>
-                @Html.ActionLink(AdminResources.edit, "EditAboutProject", new { id = Model.Id })
+                @*@Html.ActionLink(AdminResources.edit, "EditAboutProject", new { id = Model.Id })*@
+            
+                <a href='@Url.Action("EditAboutProject", "Admin",new { id = Model.Id  })'>
+                    <img src="~/Samples/img/box_edit-512.png" height="30" />
+                </a>
+         
+               
 
             </p>
         </div>

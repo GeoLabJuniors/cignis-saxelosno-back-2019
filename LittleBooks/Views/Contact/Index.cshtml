@@ -58,13 +58,13 @@
             <div class="adress-box relative">
                 <img class="absolute" src="~/Style/images/Layer-3.png" alt="bg">
                 <div class="cn-content">
+                    @foreach(var item in Model)
+                    {
                     <p>
-                        <img src="~/Style/images/location.png" alt="location" id="location">
-                        @Model.ToList()[3].Value
+                        <img src="@Url.Content(item.IconUrl)" alt="location" id="location">
+                       @item.Value
                     </p>
-                    <p><img src="~/Style/images/phone.png" alt="phone" id="phone">@Model.ToList()[0].Value</p>
-                    <p><img src="~/Style/images/email.png" alt="email" id="email">  @Model.ToList()[1].Value</p>
-                    <p><img src="~/Style/images/facebook.png" alt="facebook" id="facebook">  @Model.ToList()[2].Value</p>
+                    }
                 </div>
             </div>
 

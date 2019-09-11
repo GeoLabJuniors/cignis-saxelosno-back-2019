@@ -30,6 +30,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContactTypeId" Type="int" Nullable="false" />
           <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IconUrl" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ContactType">
           <Key>
@@ -118,16 +119,16 @@
           <EntitySet Name="ContactTypes" EntityType="Self.ContactType" />
           <EntitySet Name="AboutProjects" EntityType="LittleBooksModel.AboutProject" />
           <EntitySet Name="LoginUsers" EntityType="LittleBooksModel.LoginUser" />
-          <EntitySet Name="Contacts" EntityType="LittleBooksModel.Contact" />
-          <AssociationSet Name="FK__Contact__Contact__403A8C7D" Association="LittleBooksModel.FK__Contact__Contact__403A8C7D">
-            <End Role="ContactType" EntitySet="ContactTypes" />
-            <End Role="Contact" EntitySet="Contacts" />
-          </AssociationSet>
           <EntitySet Name="Authors" EntityType="LittleBooksModel.Author" />
           <EntitySet Name="Tales" EntityType="LittleBooksModel.Tale" />
           <AssociationSet Name="FK__Tale__AuthorId__398D8EEE" Association="LittleBooksModel.FK__Tale__AuthorId__398D8EEE">
             <End Role="Author" EntitySet="Authors" />
             <End Role="Tale" EntitySet="Tales" />
+          </AssociationSet>
+          <EntitySet Name="Contacts" EntityType="LittleBooksModel.Contact" />
+          <AssociationSet Name="FK__Contact__Contact__403A8C7D" Association="LittleBooksModel.FK__Contact__Contact__403A8C7D">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="Contact" EntitySet="Contacts" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AboutProject">
@@ -147,27 +148,6 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Contact">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContactTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ContactType" Relationship="LittleBooksModel.FK__Contact__Contact__403A8C7D" FromRole="Contact" ToRole="ContactType" />
-        </EntityType>
-        <Association Name="FK__Contact__Contact__403A8C7D">
-          <End Type="LittleBooksModel.ContactType" Role="ContactType" Multiplicity="1" />
-          <End Type="LittleBooksModel.Contact" Role="Contact" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ContactType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Contact">
-              <PropertyRef Name="ContactTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="Id" />
@@ -205,6 +185,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IconUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ContactType" Relationship="LittleBooksModel.FK__Contact__Contact__403A8C7D" FromRole="Contact" ToRole="ContactType" />
+        </EntityType>
+        <Association Name="FK__Contact__Contact__403A8C7D">
+          <End Type="LittleBooksModel.ContactType" Role="ContactType" Multiplicity="1" />
+          <End Type="LittleBooksModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -239,15 +241,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Contacts">
-            <EntityTypeMapping TypeName="LittleBooksModel.Contact">
-              <MappingFragment StoreEntitySet="Contact">
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="ContactTypeId" ColumnName="ContactTypeId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="LittleBooksModel.Author">
               <MappingFragment StoreEntitySet="Author">
@@ -269,6 +262,16 @@
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="TaleLink" ColumnName="TaleLink" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="LittleBooksModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ContactTypeId" ColumnName="ContactTypeId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

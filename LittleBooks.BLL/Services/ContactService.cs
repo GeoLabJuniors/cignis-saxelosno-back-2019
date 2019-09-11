@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using LittleBooks.Common.Models;
 using LittleBooks.DAL.Data;
 using LittleBooks.DAL.Interfaces;
@@ -31,6 +33,7 @@ namespace LittleBooks.BLL.Services
                     Code = x.ContactType.Code,
                     Name = x.ContactType.Name
                 },
+                IconUrl = x.IconUrl,
                 Value = x.Value
             }).ToList();
 
@@ -50,6 +53,7 @@ namespace LittleBooks.BLL.Services
                     Code = data.ContactType.Code,
                     Name = data.ContactType.Name
                 },
+                IconUrl=data.IconUrl,
                 Value = data.Value
             };
 
@@ -60,11 +64,36 @@ namespace LittleBooks.BLL.Services
 
         public void Edit(ContactModel contactModel)
         {
+            string imagePath = SaveImageAndGetUrl(contactModel.ImageFile);
             var data = Uow.Contacts.Get(contactModel.Id);
 
             data.Value = contactModel.Value;
+            data.IconUrl = contactModel.IconUrl;
+            if (contactModel.ImageFile != null)
+            {
+                data.IconUrl = imagePath;
+            }
 
             Uow.Save();
+        }
+
+        private string SaveImageAndGetUrl(HttpPostedFileBase ImageFile)
+        {
+            var uniqueNumber = Random32();
+            string extension = Path.GetExtension(ImageFile.FileName);
+            string name = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+
+            string fileFullName = $"{name}_{uniqueNumber}{extension}";
+
+            string imagePath = Path.Combine("~/Images/", fileFullName);
+
+            ImageFile.SaveAs(System.Web.HttpContext.Current.Server.MapPath(imagePath));
+
+            return imagePath;
+        }
+        public static string Random32()
+        {
+            return Guid.NewGuid().ToString("N");
         }
 
 

@@ -27,12 +27,18 @@ namespace LittleBooks.Controllers
            
         }
 
-        public ActionResult Catalogue( bool title, bool author, string search="")
+        public ActionResult Catalogue( int pageNum=1,bool byTitle=false, bool byAuthor=false, string search="")
         {
+            Dictionary<string, object> siteData = new Dictionary<string, object>();
+            int pageQuantity = 0;
+            int count = 0;
+            var data = taleService.GetSortAndSearchTales(pageNum,byTitle, byAuthor, search, ref count, ref pageQuantity);
 
-            var data = taleService.GetSortAndSearchTales(title, author,search);
+            siteData.Add("Count", count);
+            siteData.Add("PageQuantity", pageQuantity);
+            siteData.Add("List", data);
 
-            return View(data);
+            return View(siteData);
         }
 
        
