@@ -37,8 +37,9 @@ namespace LittleBooks.Controllers
 
             ob.ListCount = listCount;
             ob.PageQuantity = pageQuantity;
-            ob.byTitle = byTitle;
-            ob.byAuthor = byAuthor;
+            ob.Search = search;
+            ob.ByTitle = byTitle;
+            ob.ByAuthor = byAuthor;
             ob.Tales = data;
 
             return View(ob);

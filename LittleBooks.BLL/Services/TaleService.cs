@@ -225,7 +225,11 @@ namespace LittleBooks.BLL.Services
             int rangeCount = 3;
             if (pageQuantity == pageNum)
             {
-                if (count % 3 == 1)
+                if (count == 0)
+                {
+                    rangeCount = 0;
+                }
+                else if (count % 3 == 1)
                 {
                     rangeCount = 1;
                 }

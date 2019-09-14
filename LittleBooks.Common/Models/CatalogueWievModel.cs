@@ -11,7 +11,8 @@ namespace LittleBooks.Common.Models
         public List<TaleModel> Tales { get; set; }
         public int PageQuantity { get; set; }
         public int ListCount { get; set; }
-        public bool byAuthor { get; set; }
-        public bool byTitle { get; set; }
+        public bool ByAuthor { get; set; }
+        public bool ByTitle { get; set; }
+        public string Search { get; set; }
     }
 }

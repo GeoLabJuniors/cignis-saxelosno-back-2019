@@ -7,8 +7,14 @@
 @{
     ViewBag.Title = "Catalogue";
 }
-@{ 
+@{
     var tales = Model.Tales;
+}
+@{
+
+    string t = Model.ByTitle.ToString();
+    string a = Model.ByAuthor.ToString();
+    string s = Model.Search;
 }
 
 
@@ -48,8 +54,8 @@
                     <img src="~/Style/images/Layer-10.png" alt="bg" class="filter-bg">
                     <h3 class="center-position filter-h3">ფილტრი</h3>
                     <div class="arrow-down center-position"><img src="~/Style/images/next.png" alt="down-arrow"></div>
-                    <h3 class="author center-position "><a class="text-hide" href="~/Home/Catalogue?byTitle=false&byAuthor=true">ავტორი</a></h3>
-                    <h3 class="genre center-position "><a class="text-hide" href="~/Home/Catalogue?byTitle=true&byAuthor=false">სათაური</a></h3>
+                    <h3 class="author center-position "><a class="text-hide" href="~/Home/Catalogue?byTitle=false&byAuthor=true&search=@s">ავტორი</a></h3>
+                    <h3 class="genre center-position "><a class="text-hide" href="~/Home/Catalogue?byTitle=true&byAuthor=false&search=@s">სათაური</a></h3>
                 </div>
                 <div>
                     <img src="~/Style/images/shua.png" alt="shua" class="shua hide">
@@ -125,12 +131,6 @@
 
 
             }
-            @{ 
-                
-                string t = Model.byTitle.ToString();
-                string a = Model.byAuthor.ToString();
-            }
-
 
             <section class="other-page">
                 <img src="~/Style/images/didi.png" alt="#" class="sw didi">
@@ -138,7 +138,7 @@
                 <p class="num-switch">
                     @for (int i = 1; i <= Model.PageQuantity; i++)
                     {
-                        <a href="~/Home/Catalogue?pageNum=@i&byTitle=@t&byAuthor=@a">@i</a>
+                        <a href="~/Home/Catalogue?pageNum=@i&byTitle=@t&byAuthor=@a&search=@s">@i</a>
                     }
 
 
@@ -171,6 +171,7 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="~/Style/js/gifffer.min.js"></script>
+
 
 
 </body>
