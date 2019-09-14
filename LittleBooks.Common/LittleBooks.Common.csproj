@@ -67,6 +67,7 @@
     <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Models\AboutProjectModel.cs" />
     <Compile Include="Models\AuthorModel.cs" />
+    <Compile Include="Models\CatalogueWievModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\ContactTypeModel.cs" />
     <Compile Include="Models\LoginModel.cs" />

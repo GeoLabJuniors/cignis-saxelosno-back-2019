@@ -169,7 +169,7 @@ namespace LittleBooks.BLL.Services
 
             return data;
         }
-        public List<TaleModel> GetSortAndSearchTales(int pageNum, bool byTitle, bool byAuthor, string search, ref int count, ref int pageQuantity)
+        public List<TaleModel> GetSortAndSearchTales(int pageNum,  bool byTitle,  bool byAuthor, string search, ref int count, ref int pageQuantity)
         {
 
             List<TaleModel> tales;
@@ -240,7 +240,6 @@ namespace LittleBooks.BLL.Services
             }
 
             tales = tales.GetRange(rangeIndex, rangeCount);
-
 
             return tales;
 
