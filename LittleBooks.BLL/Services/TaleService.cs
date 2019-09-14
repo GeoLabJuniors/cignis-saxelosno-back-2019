@@ -169,7 +169,7 @@ namespace LittleBooks.BLL.Services
 
             return data;
         }
-        public List<TaleModel> GetSortAndSearchTales(int pageNum,  bool byTitle,  bool byAuthor, string search, ref int count, ref int pageQuantity)
+        public List<TaleModel> GetSortAndSearchTales(int pageNum, bool byTitle, bool byAuthor, string search, ref int count, ref int pageQuantity)
         {
 
             List<TaleModel> tales;
@@ -225,11 +225,7 @@ namespace LittleBooks.BLL.Services
             int rangeCount = 3;
             if (pageQuantity == pageNum)
             {
-                if (count == 0)
-                {
-                    rangeCount = 0;
-                }
-                else if (count % 3 == 1)
+                 if (count % 3 == 1)
                 {
                     rangeCount = 1;
                 }
@@ -243,7 +239,12 @@ namespace LittleBooks.BLL.Services
                 }
             }
 
-            tales = tales.GetRange(rangeIndex, rangeCount);
+            if (count != 0)
+            {
+                tales = tales.GetRange(rangeIndex, rangeCount);
+            }
+
+
 
             return tales;
 
